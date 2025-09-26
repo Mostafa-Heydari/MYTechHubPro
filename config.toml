@@ -1,7 +1,9 @@
-baseURL = "https://example.pages.dev/"   # بعداً Cloudflare آدرس درست رو جایگزین می‌کنه
+baseURL = "https://example.pages.dev/"   # Cloudflare آدرس درست رو خودش جایگزین می‌کنه
 languageCode = "fa-IR"
-title = "TechHub — مرکز مهارت‌های فناوری"
+title = "TechHub"
+theme = "hugo-PaperMod"
 defaultContentLanguage = "fa"
+paginate = 10
 enableRobotsTXT = true
 
 [languages]
@@ -10,13 +12,66 @@ enableRobotsTXT = true
     weight = 1
     title = "TechHub — مرکز مهارت‌های فناوری"
     contentDir = "content/fa"
+
   [languages.en]
     languageName = "English"
     weight = 2
     title = "TechHub"
     contentDir = "content/en"
+
   [languages.de]
     languageName = "Deutsch"
     weight = 3
     title = "TechHub — Technik-Hub"
     contentDir = "content/de"
+
+# ------------------------------
+# PaperMod Theme Configuration
+# ------------------------------
+[params]
+  env = "production"
+  defaultTheme = "auto"       # auto = dark/light mode based on system
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowRssButtonInSectionTermList = true
+
+  [params.homeInfoParams]
+    Title = "👋 خوش اومدی به TechHub"
+    Content = "اینجا جاییه برای آموزش، نمونه‌کار و مشاوره در حوزه فناوری اطلاعات"
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/Mostafa-Heydari"
+
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://linkedin.com"
+
+  [[params.socialIcons]]
+    name = "telegram"
+    url = "https://t.me"
+
+# ------------------------------
+# Menu
+# ------------------------------
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name = "درباره من"
+    url = "/about/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "blog"
+    name = "وبلاگ"
+    url = "/posts/"
+    weight = 20
+
+  [[menu.main]]
+    identifier = "contact"
+    name = "تماس"
+    url = "/contact/"
+    weight = 30
