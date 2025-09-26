@@ -1,9 +1,8 @@
-baseURL = "https://example.pages.dev/"    # بعداً Cloudflare آدرس نهایی را می‌گذارد؛ فعلاً همین باشه
+baseURL = "https://example.pages.dev/"   # بعداً Cloudflare آدرس درست رو جایگزین می‌کنه
 languageCode = "fa-IR"
 title = "TechHub — مرکز مهارت‌های فناوری"
 defaultContentLanguage = "fa"
 enableRobotsTXT = true
-theme = ""
 
 [languages]
   [languages.fa]
@@ -14,7 +13,7 @@ theme = ""
   [languages.en]
     languageName = "English"
     weight = 2
-    title = "TechHub — TechHub"
+    title = "TechHub"
     contentDir = "content/en"
   [languages.de]
     languageName = "Deutsch"
