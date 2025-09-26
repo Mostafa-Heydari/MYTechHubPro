@@ -1,46 +1,23 @@
 baseURL = "https://example.pages.dev/"   # Cloudflare آدرس درست رو خودش جایگزین می‌کنه
-languageCode = "fa-IR"
-title = "TechHub"
+title = "MY Tech Hub Pro"
 theme = "hugo-PaperMod"
-defaultContentLanguage = "fa"
-paginate = 10
-enableRobotsTXT = true
+languageCode = "en-us"
+defaultContentLanguage = "en"
 
-[languages]
-  [languages.fa]
-    languageName = "فارسی"
-    weight = 1
-    title = "TechHub — مرکز مهارت‌های فناوری"
-    contentDir = "content/fa"
+[pagination]
+  pagerSize = 10
 
-  [languages.en]
-    languageName = "English"
-    weight = 2
-    title = "TechHub"
-    contentDir = "content/en"
-
-  [languages.de]
-    languageName = "Deutsch"
-    weight = 3
-    title = "TechHub — Technik-Hub"
-    contentDir = "content/de"
-
-# ------------------------------
-# PaperMod Theme Configuration
-# ------------------------------
 [params]
-  env = "production"
-  defaultTheme = "auto"       # auto = dark/light mode based on system
   ShowReadingTime = true
   ShowShareButtons = true
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
-  ShowRssButtonInSectionTermList = true
+  defaultTheme = "auto" # light/dark mode بر اساس سیستم کاربر
 
   [params.homeInfoParams]
-    Title = "👋 خوش اومدی به TechHub"
-    Content = "اینجا جاییه برای آموزش، نمونه‌کار و مشاوره در حوزه فناوری اطلاعات"
+    Title = "👋 Welcome to MY Tech Hub Pro"
+    Content = "اینجا جایی برای آموزش، نمونه‌کار و مشاوره در حوزه فناوری اطلاعات است."
 
   [[params.socialIcons]]
     name = "github"
@@ -54,24 +31,37 @@ enableRobotsTXT = true
     name = "telegram"
     url = "https://t.me"
 
-# ------------------------------
-# Menu
-# ------------------------------
+[languages]
+  [languages.en]
+    languageName = "English"
+    weight = 1
+    contentDir = "content/en"
+
+  [languages.fa]
+    languageName = "فارسی"
+    weight = 2
+    contentDir = "content/fa"
+
+  [languages.de]
+    languageName = "Deutsch"
+    weight = 3
+    contentDir = "content/de"
+
 [menu]
   [[menu.main]]
     identifier = "about"
-    name = "درباره من"
+    name = "About"
     url = "/about/"
     weight = 10
 
   [[menu.main]]
     identifier = "blog"
-    name = "وبلاگ"
+    name = "Blog"
     url = "/posts/"
     weight = 20
 
   [[menu.main]]
     identifier = "contact"
-    name = "تماس"
+    name = "Contact"
     url = "/contact/"
     weight = 30
