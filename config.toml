@@ -1,0 +1,23 @@
+baseURL = "https://example.pages.dev/"    # بعداً Cloudflare آدرس نهایی را می‌گذارد؛ فعلاً همین باشه
+languageCode = "fa-IR"
+title = "TechHub — مرکز مهارت‌های فناوری"
+defaultContentLanguage = "fa"
+enableRobotsTXT = true
+theme = ""
+
+[languages]
+  [languages.fa]
+    languageName = "فارسی"
+    weight = 1
+    title = "TechHub — مرکز مهارت‌های فناوری"
+    contentDir = "content/fa"
+  [languages.en]
+    languageName = "English"
+    weight = 2
+    title = "TechHub — TechHub"
+    contentDir = "content/en"
+  [languages.de]
+    languageName = "Deutsch"
+    weight = 3
+    title = "TechHub — Technik-Hub"
+    contentDir = "content/de"
