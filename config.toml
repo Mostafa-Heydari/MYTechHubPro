@@ -12,25 +12,57 @@ defaultContentLanguage = "fa"
 defaultContentLanguageInSubdir = true
 
 [languages]
+
   [languages.fa]
     languageName = "فارسی"
     weight = 1
     contentDir = "content/fa"
+
+    [languages.fa.menu]
+      [[languages.fa.menu.main]]
+        identifier = "home"
+        name = "خانه"
+        url = "/fa/"
+        weight = 1
+
+      [[languages.fa.menu.main]]
+        identifier = "about"
+        name = "درباره"
+        url = "/fa/about/"
+        weight = 2
 
   [languages.en]
     languageName = "English"
     weight = 2
     contentDir = "content/en"
 
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "home"
+        name = "Home"
+        url = "/en/"
+        weight = 1
+
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/en/about/"
+        weight = 2
+
   [languages.de]
     languageName = "Deutsch"
     weight = 3
     contentDir = "content/de"
 
-# منوها
-[menu]
-  [[menu.main]]
-    identifier = "about"
-    name = "About"
-    url = "/about/"
-    weight = 1
+    [languages.de.menu]
+      [[languages.de.menu.main]]
+        identifier = "home"
+        name = "Startseite"
+        url = "/de/"
+        weight = 1
+
+      [[languages.de.menu.main]]
+        identifier = "about"
+        name = "Über uns"
+        url = "/de/about/"
+        weight = 2
