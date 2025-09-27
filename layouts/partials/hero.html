@@ -1,0 +1,15 @@
+<section class="hero">
+  <div class="hero-left">
+    <h1>{{ with .Site.Params.tagline }}{{ . }}{{ else }}مشاوره و آموزش فناوری اطلاعات{{ end }}</h1>
+    <p>{{ with .Site.Params.description }}{{ . }}{{ else }}خدمات مشاوره، آموزش و توسعه نرم‌افزار با رویکرد عملی و پروژه‌محور.{{ end }}</p>
+    <div class="cta"><a class="btn" href="{{ "contact/" | relLangURL }}">درخواست مشاوره</a></div>
+    <div class="cards services" style="margin-top:20px">
+      <div class="card"><h3>مشاوره زیرساخت</h3><p>طراحی و پیاده‌سازی زیرساخت امن و مقیاس‌پذیر.</p></div>
+      <div class="card"><h3>آموزش حرفه‌ای</h3><p>دوره‌های عملی و پروژه‌محور در زمینه وب و شبکه.</p></div>
+      <div class="card"><h3>پشتیبانی و همکاری</h3><p>همکاری در پروژه‌ها و توسعه بلندمدت.</p></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="/images/hero-illustration.png" alt="hero" style="max-width:360px;border-radius:12px;box-shadow:0 10px 30px rgba(15,23,42,0.08)"/>
+  </div>
+</section>

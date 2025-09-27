@@ -1,0 +1,18 @@
+<div class="lang-wrap">
+  <details role="list" style="position:relative">
+    <summary class="lang-btn" aria-haspopup="listbox">
+      <img src="/flags/{{ .Site.Language.Lang }}.svg" alt="{{ .Site.Language.LanguageName }}" style="width:20px;height:14px"/>
+      <span style="font-weight:600">{{ .Site.Language.LanguageName }}</span>
+    </summary>
+    <div style="position:absolute;right:0;margin-top:8px;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 8px 20px rgba(15,23,42,0.12)">
+      {{ range .Site.Languages }}
+        {{ if ne .Lang $.Site.Language.Lang }}
+          <a href="/{{ .Lang }}/" style="display:flex;align-items:center;gap:8px;padding:8px 12px;color:#111;text-decoration:none">
+            <img src="/flags/{{ .Lang }}.svg" alt="{{ .LanguageName }}" style="width:20px;height:14px"/>
+            <span>{{ .LanguageName }}</span>
+          </a>
+        {{ end }}
+      {{ end }}
+    </div>
+  </details>
+</div>

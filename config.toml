@@ -1,0 +1,26 @@
+baseURL = "https://example.pages.dev/"
+title = "MYTechHubPro"
+defaultContentLanguage = "fa"
+defaultContentLanguageInSubdir = true
+paginate = 6
+
+[params]
+  tagline = "مشاوره، آموزش و توسعه فناوری اطلاعات"
+  author = "مصطفی حیدری"
+  description = "مرکز مشاوره و آموزش فناوری اطلاعات - زیرساخت، امنیت، توسعه وب و آموزش حرفه‌ای"
+
+[languages]
+  [languages.fa]
+    languageName = "فارسی"
+    weight = 1
+    contentDir = "content/fa"
+
+  [languages.en]
+    languageName = "English"
+    weight = 2
+    contentDir = "content/en"
+
+  [languages.de]
+    languageName = "Deutsch"
+    weight = 3
+    contentDir = "content/de"
