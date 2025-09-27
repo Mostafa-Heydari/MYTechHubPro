@@ -1,4 +1,4 @@
-baseURL = "https://mytechhubpro24.pages.dev/"
+baseURL = "/"
 languageCode = "fa"
 title = "MYTechHubPro"
 theme = "PaperMod"
@@ -12,31 +12,26 @@ defaultContentLanguage = "fa"
 defaultContentLanguageInSubdir = true
 
 # تنظیمات زبان‌ها
+defaultContentLanguage = "fa"
+defaultContentLanguageInSubdir = true
+
 [languages]
 
   [languages.fa]
     languageName = "فارسی 🇮🇷"
     weight = 1
     contentDir = "content/fa"
-    [languages.fa.params]
-      home = "خانه"
-      about = "درباره ما"
 
   [languages.en]
     languageName = "English 🇬🇧"
     weight = 2
     contentDir = "content/en"
-    [languages.en.params]
-      home = "Home"
-      about = "About"
 
   [languages.de]
     languageName = "Deutsch 🇩🇪"
     weight = 3
     contentDir = "content/de"
-    [languages.de.params]
-      home = "Startseite"
-      about = "Über uns"
+
 
 # منوها
 [menu]
@@ -52,3 +47,4 @@ defaultContentLanguageInSubdir = true
     name = "ℹ️ About"
     url = "/about/"
     weight = 2
+
