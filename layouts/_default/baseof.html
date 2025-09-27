@@ -1,102 +1,55 @@
-<!doctype html>
-<html lang="{{ .Site.Language.Lang }}" dir="{{ if eq .Site.Language.Lang "fa" }}rtl{{ else }}ltr{{ end }}">
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>{{ .Title }} - {{ .Site.Title }}</title>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto,"Vazirmatn",Arial;
-      margin: 0;
-      background: #0b1220;
-      color: #e6eef6;
-    }
-    .wrap { max-width: 980px; margin: 28px auto; padding: 18px; }
-    header { display: flex; justify-content: space-between; align-items: center; }
-    nav a { margin-left: 10px; color: #9aa6b2; text-decoration: none; }
-    nav a:hover { color: #fff; }
-    .card { background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; margin-top: 12px; }
-
-    /* منوی زبان */
-    .lang-btn {
-      display: flex; align-items: center; padding: 6px 10px;
-      background: #1f2937; color: #fff;
-      border-radius: 6px; cursor: pointer;
-    }
-    .lang-btn:hover { background: #374151; }
-    .lang-btn img { width: 20px; height: 20px; margin-right: 6px; }
-    .lang-menu {
-      display: none;
-      position: absolute;
-      right: 0; margin-top: 6px;
-      background: #fff; color: #000;
-      border-radius: 6px;
-      min-width: 140px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      z-index: 50;
-    }
-    .lang-menu a {
-      display: flex; align-items: center;
-      padding: 8px 12px; font-size: 14px;
-      text-decoration: none; color: #333;
-    }
-    .lang-menu a:hover { background: #f3f4f6; }
-    .lang-menu img { width: 18px; height: 18px; margin-right: 6px; }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+  {{ partial "head.html" . }}
+  <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-  <div class="wrap">
-    <header>
-      <div>
-        <h1 style="margin:0">{{ .Site.Title }}</h1>
-        <div style="color:#9aa6b2">{{ with .Site.Params.tagline }}{{ . }}{{ end }}</div>
+<body class="bg-gray-900 text-white flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-gray-800 shadow-md">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+
+      <!-- Logo -->
+      <div class="text-2xl font-bold">
+        <a href="/" class="hover:text-gray-300">{{ .Site.Title }}</a>
       </div>
 
-      <!-- ناوبری -->
-      <nav style="display:flex;align-items:center;gap:15px;">
-        <a href="{{ .Site.BaseURL }}">Home</a>
-
-        <!-- منوی زبان -->
-        <div class="relative" style="position:relative;">
-          <div id="langBtn" class="lang-btn">
-            <img src="/flags/fa.svg" alt="فارسی" id="current-flag">
-            <span id="current-lang">فارسی</span>
-            <svg style="width:16px;height:16px;margin-left:6px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M19 9l-7 7-7-7"/>
+      <!-- Language Switcher -->
+      <div class="relative">
+        <details class="group">
+          <summary class="flex items-center gap-2 cursor-pointer bg-gray-700 px-3 py-2 rounded-lg hover:bg-gray-600">
+            <img src="/flags/{{ .Site.Language.Lang }}.svg" alt="{{ .Site.Language.LanguageName }}" class="w-5 h-5">
+            <span>{{ .Site.Language.LanguageName }}</span>
+            <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
             </svg>
+          </summary>
+          <div class="absolute mt-2 bg-gray-700 rounded-lg shadow-lg py-2 w-40">
+            {{ range .Site.Languages }}
+              <a href="/{{ .Lang }}/" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-600">
+                <img src="/flags/{{ .Lang }}.svg" alt="{{ .LanguageName }}" class="w-5 h-5">
+                <span>{{ .LanguageName }}</span>
+              </a>
+            {{ end }}
           </div>
-          <div id="langMenu" class="lang-menu">
-            <a href="/fa/"><img src="/flags/fa.svg" alt="فارسی"> فارسی</a>
-            <a href="/en/"><img src="/flags/en.svg" alt="English"> English</a>
-            <a href="/de/"><img src="/flags/de.svg" alt="Deutsch"> Deutsch</a>
-          </div>
-        </div>
-      </nav>
-    </header>
+        </details>
+      </div>
+    </div>
+  </header>
 
-    <main>
-      {{ block "main" . }}{{ end }}
-    </main>
+  <!-- Main Content -->
+  <main class="flex-grow container mx-auto px-6 py-8">
+    {{ block "main" . }}{{ end }}
+  </main>
 
-    <footer style="margin-top:28px;color:#9aa6b2">
-      © {{ now.Format "2006" }} TechHub — ساخته شده توسط مصطفی حیدری
-    </footer>
-  </div>
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-center py-4">
+    <p class="text-gray-400">© {{ now.Format "2006" }} TechHub — ساخته شده توسط مصطفی حیدری</p>
+  </footer>
 
-  <script>
-    const langBtn = document.getElementById('langBtn');
-    const langMenu = document.getElementById('langMenu');
-
-    langBtn.addEventListener('click', () => {
-      langMenu.style.display = langMenu.style.display === 'block' ? 'none' : 'block';
-    });
-
-    window.addEventListener('click', (e) => {
-      if (!langBtn.contains(e.target)) {
-        langMenu.style.display = 'none';
-      }
-    });
-  </script>
 </body>
 </html>
