@@ -1,68 +1,54 @@
 baseURL = "https://mytechhubpro24.pages.dev/"
-languageCode = "en"
+languageCode = "fa"
 title = "MYTechHubPro"
 theme = "PaperMod"
 
-# صفحه‌بندی جدید
+# صفحه‌بندی
 [pagination]
   pagerSize = 10
 
-# تنظیمات زبان‌ها
+# زبان پیش‌فرض
 defaultContentLanguage = "fa"
 defaultContentLanguageInSubdir = true
 
+# تنظیمات زبان‌ها
 [languages]
 
   [languages.fa]
     languageName = "فارسی"
     weight = 1
     contentDir = "content/fa"
-
-    [languages.fa.menu]
-      [[languages.fa.menu.main]]
-        identifier = "home"
-        name = "خانه"
-        url = "/fa/"
-        weight = 1
-
-      [[languages.fa.menu.main]]
-        identifier = "about"
-        name = "درباره"
-        url = "/fa/about/"
-        weight = 2
+    [languages.fa.params]
+      home = "خانه"
+      about = "درباره ما"
 
   [languages.en]
     languageName = "English"
     weight = 2
     contentDir = "content/en"
-
-    [languages.en.menu]
-      [[languages.en.menu.main]]
-        identifier = "home"
-        name = "Home"
-        url = "/en/"
-        weight = 1
-
-      [[languages.en.menu.main]]
-        identifier = "about"
-        name = "About"
-        url = "/en/about/"
-        weight = 2
+    [languages.en.params]
+      home = "Home"
+      about = "About"
 
   [languages.de]
     languageName = "Deutsch"
     weight = 3
     contentDir = "content/de"
+    [languages.de.params]
+      home = "Startseite"
+      about = "Über uns"
 
-    [languages.de.menu]
-      [[languages.de.menu.main]]
-        identifier = "home"
-        name = "Startseite"
-        url = "/de/"
-        weight = 1
+# منوها
+[menu]
 
-      [[languages.de.menu.main]]
-        identifier = "about"
-        name = "Über uns"
-        url = "/de/about/"
-        weight = 2
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 2
