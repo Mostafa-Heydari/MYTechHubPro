@@ -1,0 +1,20 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "MYTechHubPro"
+theme = "pro"
+defaultContentLanguage = "en"
+
+[languages]
+  [languages.en]
+    weight = 1
+    languageName = "English"
+  [languages.fa]
+    weight = 2
+    languageName = "فارسی"
+  [languages.de]
+    weight = 3
+    languageName = "Deutsch"
+
+[params]
+  mainSections = ["blog"]
+  enableContactForm = true
