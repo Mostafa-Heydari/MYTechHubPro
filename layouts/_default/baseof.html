@@ -4,6 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>{{ .Title }} - {{ .Site.Title }}</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/custom.css">
+
+  <!-- JS -->
+  <script src="/js/custom.js" defer></script>
+
   <style>
     body{font-family: system-ui, -apple-system, "Segoe UI", Roboto,"Vazirmatn",Arial; margin:0; background:#0b1220;color:#e6eef6}
     .wrap{max-width:980px;margin:28px auto;padding:18px}
@@ -16,9 +23,12 @@
 <body>
   <div class="wrap">
     <header>
-      <div>
-        <h1 style="margin:0">{{ .Site.Title }}</h1>
-        <div style="color:#9aa6b2">{{ with .Site.Params.tagline }}{{ . }}{{ end }}</div>
+      <div style="display:flex;align-items:center">
+        <img src="/images/logo.png" alt="Logo" style="height:40px;margin-right:10px">
+        <div>
+          <h1 style="margin:0">{{ .Site.Title }}</h1>
+          <div style="color:#9aa6b2">{{ with .Site.Params.tagline }}{{ . }}{{ end }}</div>
+        </div>
       </div>
       <nav>
         <a href="{{ .Site.BaseURL }}">Home</a>
