@@ -1,13 +1,13 @@
 baseURL = "https://mytechhubpro24.pages.dev/"
-languageCode = "en"
+languageCode = "fa"
 title = "MYTechHubPro"
 theme = "PaperMod"
 
-# مهم: جلوگیری از ریدایرکت اشتباه به دامنه‌های عجیب
+# تنظیمات لینک‌ها
 canonifyURLs = true
-relativeURLs = true
+relativeURLs = false
 
-# صفحه‌بندی
+# صفحه‌بندی جدید
 [pagination]
   pagerSize = 10
 
@@ -38,10 +38,3 @@ defaultContentLanguageInSubdir = true
     name = "About"
     url = "/about/"
     weight = 1
-
-# تنظیم خروجی
-[outputs]
-  home = ["HTML"]
-
-[permalinks]
-  page = "/:slug/"
