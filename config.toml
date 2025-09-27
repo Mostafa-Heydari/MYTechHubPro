@@ -3,15 +3,18 @@ languageCode = "en"
 title = "MYTechHubPro"
 theme = "PaperMod"
 
-# صفحه‌بندی جدید
+# مهم: جلوگیری از ریدایرکت اشتباه به دامنه‌های عجیب
+canonifyURLs = true
+relativeURLs = true
+
+# صفحه‌بندی
 [pagination]
   pagerSize = 10
 
-# زبان پیش‌فرض
+# زبان‌ها
 defaultContentLanguage = "fa"
 defaultContentLanguageInSubdir = true
 
-# تنظیمات زبان‌ها
 [languages]
   [languages.fa]
     languageName = "فارسی"
@@ -31,31 +34,14 @@ defaultContentLanguageInSubdir = true
 # منوها
 [menu]
   [[menu.main]]
-    identifier = "home"
-    name = "خانه"
-    url = "/"
-    weight = 1
-
-  [[menu.main]]
-    identifier = "fa"
-    name = "فارسی"
-    url = "/fa/"
-    weight = 2
-
-  [[menu.main]]
-    identifier = "en"
-    name = "English"
-    url = "/en/"
-    weight = 3
-
-  [[menu.main]]
-    identifier = "de"
-    name = "Deutsch"
-    url = "/de/"
-    weight = 4
-
-  [[menu.main]]
     identifier = "about"
     name = "About"
     url = "/about/"
-    weight = 5
+    weight = 1
+
+# تنظیم خروجی
+[outputs]
+  home = ["HTML"]
+
+[permalinks]
+  page = "/:slug/"
