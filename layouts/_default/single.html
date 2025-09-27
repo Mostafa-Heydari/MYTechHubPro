@@ -1,6 +1,36 @@
 {{ define "main" }}
-  <article>
-    <h2>{{ .Title }}</h2>
-    <div>{{ .Content }}</div>
-  </article>
+<main class="container mx-auto px-6 py-12 text-gray-100">
+  
+  <!-- بخش معرفی -->
+  <section class="mb-16 text-center">
+    <h1 class="text-4xl font-bold mb-4">سلام 👋 من مصطفی حیدری هستم</h1>
+    <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+      مشاور و مدرس فناوری اطلاعات — زیرساخت، امنیت و توسعه وب.
+      اینجا می‌توانید پروژه‌ها، دوره‌ها و خدمات من را پیدا کنید.
+    </p>
+  </section>
+
+  <!-- خدمات -->
+  <section class="mb-16">
+    <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-6">خدمات</h2>
+    <ul class="space-y-3 text-lg">
+      <li>✅ مشاوره فنی و طراحی زیرساخت</li>
+      <li>✅ راه‌اندازی و بهینه‌سازی سرور/شبکه</li>
+      <li>✅ آموزش ویدئویی و دوره‌های آنلاین</li>
+      <li>✅ همکاری در پروژه‌ها و فریلنسینگ</li>
+    </ul>
+  </section>
+
+  <!-- تماس -->
+  <section>
+    <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-6">تماس</h2>
+    <ul class="space-y-4 text-lg">
+      <li>📧 ایمیل: <a href="mailto:mostafaheydari67.m@gmail.com" class="text-blue-400 hover:underline">mostafaheydari67.m@gmail.com</a></li>
+      <li>💬 تلگرام: <a href="https://t.me/YourHandle" class="text-blue-400 hover:underline">@YourHandle</a></li>
+      <li>🔗 لینکدین: <a href="https://linkedin.com/in/mostafa-heydari" class="text-blue-400 hover:underline">linkedin.com/in/mostafa-heydari</a></li>
+      <li>📱 موبایل: <span class="text-gray-300">+989393714493</span></li>
+    </ul>
+  </section>
+
+</main>
 {{ end }}
