@@ -1,160 +1,89 @@
-<!DOCTYPE html>
-<html lang="{{ .Site.Language.Lang }}">
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}" dir="{{ if eq .Site.Language.Lang "fa" }}rtl{{ else }}ltr{{ end }}">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
-  {{ partial "head.html" . }}
-</head>
-<body>
-  <header>
-    <nav class="top-nav">
-      <a href="{{ .Site.BaseURL }}" class="nav-home">Home</a>
-
-      <!-- Dropdown -->
-      <div class="lang-dropdown">
-        <button class="lang-btn" onclick="toggleLangMenu()">
-          {{ .Site.Language.LanguageName }}
-          {{ if eq .Site.Language.Lang "fa" }} 🇮🇷 {{ end }}
-          {{ if eq .Site.Language.Lang "en" }} 🇬🇧 {{ end }}
-          {{ if eq .Site.Language.Lang "de" }} 🇩🇪 {{ end }}
-
-          <!-- فلش SVG -->
-          <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </button>
-        <div id="langMenu" class="lang-menu">
-          {{ range .Site.Languages }}
-            {{ if ne .Lang $.Site.Language.Lang }}
-              <a href="{{ .Lang | relURL }}">
-                {{ .LanguageName }}
-                {{ if eq .Lang "fa" }} 🇮🇷 {{ end }}
-                {{ if eq .Lang "en" }} 🇬🇧 {{ end }}
-                {{ if eq .Lang "de" }} 🇩🇪 {{ end }}
-              </a>
-            {{ end }}
-          {{ end }}
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <main class="content">
-    {{ block "main" . }}{{ end }}
-  </main>
-
-  <footer class="footer">
-    © {{ now.Year }} {{ .Site.Title }} — ساخته شده توسط مصطفی حیدری
-  </footer>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{ block "title" . }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
   <style>
     body {
-      background:#0d1117;
-      color:#ffffff;  /* سفید خالص برای رفع تار بودن */
-      font-family: "Vazir", sans-serif;
-      font-weight: 400;
-      margin:0;
-      line-height: 1.8;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto,"Vazirmatn",Arial;
+      margin:0; 
+      background:#0b1220;
+      color:#ffffff;
     }
+    .wrap {max-width:980px;margin:28px auto;padding:18px}
+    header {display:flex;justify-content:space-between;align-items:center}
+    nav {display:flex;gap:14px;align-items:center}
+    nav a {color:#e6eef6;text-decoration:none;font-weight:500}
+    nav a:hover {color:#58a6ff}
 
-    /* منو بالای صفحه */
-    .top-nav {
-      display:flex;
-      justify-content:flex-start;
-      align-items:center;
-      gap:20px;
-      padding:15px 25px;
-      background:#161b22;
-      border-bottom:1px solid #222;
-      position:fixed;
-      top:0;
-      left:0;
-      right:0;
-      z-index:1000;
-    }
-
-    .nav-home {
-      color:#fff;
-      text-decoration:none;
-      font-weight:bold;
-    }
-
+    /* منوی زبان */
+    .lang-menu {position:relative}
+    .lang-btn {background:none;border:none;color:#e6eef6;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:6px}
     .lang-dropdown {
-      position: relative;
+      display:none;
+      position:absolute;
+      background:#162033;
+      border-radius:6px;
+      padding:6px 0;
+      top:100%;
+      left:0;
+      min-width:120px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.4);
+      z-index:100;
     }
+    .lang-dropdown a {
+      display:block;
+      padding:6px 12px;
+      color:#e6eef6;
+      text-decoration:none;
+    }
+    .lang-dropdown a:hover {background:#24314d;color:#58a6ff}
+    .lang-menu:hover .lang-dropdown {display:block}
 
-    .lang-btn {
-      background: transparent;
-      border: none;
-      color: #f1f1f1;
-      font-size: 15px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .arrow-icon {
-      transition: transform 0.3s ease;
-    }
-
-    .lang-btn:hover .arrow-icon {
-      transform: rotate(180deg);
-    }
-
-    .lang-menu {
-      display: none;
-      position: absolute;
-      background: #1a2233;
-      border: 1px solid #333;
-      border-radius: 6px;
-      margin-top: 6px;
-      min-width: 160px;
-      z-index: 10;
-    }
-
-    .lang-menu a {
-      display: block;
-      padding: 10px 14px;
-      color: #f1f1f1;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    .lang-menu a:hover {
-      background: #2a3244;
-    }
-
-    .lang-menu.show {
-      display: block;
-    }
-
-    /* فاصله محتوا از منوی بالایی */
-    .content {
-      padding: 100px 30px 30px 30px;
-    }
-
-    .footer {
-      text-align:center;
-      margin:30px 0;
-      color:#bbb;
-    }
+    footer {margin-top:28px;color:#9aa6b2;font-size:14px;text-align:center}
+    h1,h2,h3,h4,h5,h6 {color:#ffffff;font-weight:700}
+    p,li {color:#ffffff;font-weight:400}
+    a {color:#58a6ff}
   </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1 style="margin:0">{{ .Site.Title }}</h1>
+        <div style="color:#9aa6b2">{{ with .Site.Params.tagline }}{{ . }}{{ end }}</div>
+      </div>
+      <nav>
+        <a href="{{ .Site.BaseURL }}">Home</a>
+        <div class="lang-menu">
+          <button class="lang-btn">
+            {{ if eq .Site.Language.Lang "fa" }}فارسی 🇮🇷{{ end }}
+            {{ if eq .Site.Language.Lang "en" }}English 🇬🇧{{ end }}
+            {{ if eq .Site.Language.Lang "de" }}Deutsch 🇩🇪{{ end }}
+          </button>
+          <div class="lang-dropdown">
+            {{ range .Site.Languages }}
+              {{ if ne $.Site.Language.Lang .Lang }}
+                <a href="{{ .Lang | relURL }}">
+                  {{ if eq .Lang "fa" }}فارسی 🇮🇷{{ end }}
+                  {{ if eq .Lang "en" }}English 🇬🇧{{ end }}
+                  {{ if eq .Lang "de" }}Deutsch 🇩🇪{{ end }}
+                </a>
+              {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      </nav>
+    </header>
 
-  <script>
-    function toggleLangMenu() {
-      document.getElementById("langMenu").classList.toggle("show");
-    }
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
 
-    window.addEventListener("click", function(event) {
-      if (!event.target.closest('.lang-dropdown')) {
-        let dropdowns = document.getElementsByClassName("lang-menu");
-        for (let i = 0; i < dropdowns.length; i++) {
-          dropdowns[i].classList.remove("show");
-        }
-      }
-    });
-  </script>
+    <footer>
+      © {{ now.Format "2006" }} {{ .Site.Title }} — ساخته شده توسط مصطفی حیدری
+    </footer>
+  </div>
 </body>
 </html>
