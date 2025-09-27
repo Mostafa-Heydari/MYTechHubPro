@@ -1,52 +1,33 @@
-baseURL = "https://example.pages.dev/"   # Cloudflare آدرس درست رو خودش جایگزین می‌کنه
-title = "MY Tech Hub Pro"
-theme = "hugo-PaperMod"
-languageCode = "en-us"
-defaultContentLanguage = "en"
+baseURL = "https://yourdomain.com/"
+languageCode = "en"
+title = "MYTechHubPro"
+theme = "PaperMod"
 
+# پیکربندی جدید paginate
 [pagination]
   pagerSize = 10
 
-[params]
-  ShowReadingTime = true
-  ShowShareButtons = true
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  defaultTheme = "auto" # light/dark mode بر اساس سیستم کاربر
-
-  [params.homeInfoParams]
-    Title = "👋 Welcome to MY Tech Hub Pro"
-    Content = "اینجا جایی برای آموزش، نمونه‌کار و مشاوره در حوزه فناوری اطلاعات است."
-
-  [[params.socialIcons]]
-    name = "github"
-    url = "https://github.com/Mostafa-Heydari"
-
-  [[params.socialIcons]]
-    name = "linkedin"
-    url = "https://linkedin.com"
-
-  [[params.socialIcons]]
-    name = "telegram"
-    url = "https://t.me"
+# تنظیمات زبان‌ها (چند زبانه)
+defaultContentLanguage = "fa"
+defaultContentLanguageInSubdir = true
 
 [languages]
-  [languages.en]
-    languageName = "English"
-    weight = 1
-    contentDir = "content/en"
-
   [languages.fa]
     languageName = "فارسی"
-    weight = 2
+    weight = 1
     contentDir = "content/fa"
+
+  [languages.en]
+    languageName = "English"
+    weight = 2
+    contentDir = "content/en"
 
   [languages.de]
     languageName = "Deutsch"
     weight = 3
     contentDir = "content/de"
 
+# منوها
 [menu]
   [[menu.main]]
     identifier = "about"
@@ -60,8 +41,12 @@ defaultContentLanguage = "en"
     url = "/posts/"
     weight = 20
 
-  [[menu.main]]
-    identifier = "contact"
-    name = "Contact"
-    url = "/contact/"
-    weight = 30
+# PaperMod تنظیمات
+[params]
+  env = "production"
+  defaultTheme = "auto"
+  showReadingTime = true
+  showShareButtons = true
+  showPostNavLinks = true
+  showBreadCrumbs = true
+  showCodeCopyButtons = true
