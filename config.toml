@@ -1,41 +1,32 @@
-baseURL = "https://mytechhubpro24.pages.dev/"
-languageCode = "en"
-title = "MYTechHubPro"
+baseURL = "https://mytechhub.pages.dev/"
+title = "TechHub"
 theme = "PaperMod"
-
-[pagination]
-  pagerSize = 10
-
 defaultContentLanguage = "fa"
 defaultContentLanguageInSubdir = true
+paginate = 5
 
 [languages]
-
   [languages.fa]
-    languageName = "فارسی 🇮🇷"
+    languageName = "فارسی"
     weight = 1
     contentDir = "content/fa"
 
   [languages.en]
-    languageName = "English 🇬🇧"
+    languageName = "English"
     weight = 2
     contentDir = "content/en"
 
   [languages.de]
-    languageName = "Deutsch 🇩🇪"
+    languageName = "Deutsch"
     weight = 3
     contentDir = "content/de"
 
-[menu]
+[params]
+  tagline = "یک هاب تکنولوژی چندزبانه"
+  ShowLanguageSwitcher = true
+  defaultTheme = "dark"
 
-  [[menu.main]]
-    identifier = "home"
-    name = "🏠 Home"
-    url = "/"
-    weight = 1
-
-  [[menu.main]]
-    identifier = "about"
-    name = "ℹ️ About"
-    url = "/about/"
-    weight = 2
+  [params.social]
+    email = "mailto:your-email@example.com"
+    linkedin = "https://linkedin.com/in/yourprofile"
+    telegram = "https://t.me/yourusername"
