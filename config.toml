@@ -1,17 +1,13 @@
 baseURL = "https://mytechhubpro24.pages.dev/"
-languageCode = "fa"
+languageCode = "en"
 title = "MYTechHubPro"
 theme = "PaperMod"
-
-# تنظیمات لینک‌ها
-canonifyURLs = true
-relativeURLs = false
 
 # صفحه‌بندی جدید
 [pagination]
   pagerSize = 10
 
-# زبان‌ها
+# تنظیمات زبان‌ها
 defaultContentLanguage = "fa"
 defaultContentLanguageInSubdir = true
 
