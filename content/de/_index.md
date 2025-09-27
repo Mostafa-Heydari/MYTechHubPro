@@ -15,10 +15,10 @@ Hier findest du meine Projekte, Kurse und Beratungsangebote.
 
 ## Kontakt
 
-E-mail: [Mostafaheydari67.m@gmail.com]
+E-mail: Mostafaheydari67.m@gmail.com
 
 Telegram: [@YourHandle](https://t.me/YourHandle)
 
-Linkedin: [linkedin.com/in/mostafa-heydari]
+Linkedin: Linkedin.com/in/mostafa-heydari
 
 Mobile: +989393714493
