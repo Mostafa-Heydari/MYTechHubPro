@@ -1,3 +1,5 @@
-# Über uns
+---
+title: "Über uns"
+---
 
-Dies ist die deutsche Über-Seite.
+Hier finden Sie Informationen über unser Unternehmen.

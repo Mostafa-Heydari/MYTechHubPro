@@ -1,3 +1,5 @@
-# About Us
+---
+title: "About"
+---
 
-This is the English About page.
+Here you can find information about our business.
