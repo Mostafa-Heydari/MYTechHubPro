@@ -15,7 +15,7 @@ defaultContentLanguageInSubdir = true
 [languages]
 
   [languages.fa]
-    languageName = "فارسی"
+    languageName = "فارسی 🇮🇷"
     weight = 1
     contentDir = "content/fa"
     [languages.fa.params]
@@ -23,7 +23,7 @@ defaultContentLanguageInSubdir = true
       about = "درباره ما"
 
   [languages.en]
-    languageName = "English"
+    languageName = "English 🇬🇧"
     weight = 2
     contentDir = "content/en"
     [languages.en.params]
@@ -31,7 +31,7 @@ defaultContentLanguageInSubdir = true
       about = "About"
 
   [languages.de]
-    languageName = "Deutsch"
+    languageName = "Deutsch 🇩🇪"
     weight = 3
     contentDir = "content/de"
     [languages.de.params]
@@ -43,12 +43,12 @@ defaultContentLanguageInSubdir = true
 
   [[menu.main]]
     identifier = "home"
-    name = "Home"
+    name = "🏠 Home"
     url = "/"
     weight = 1
 
   [[menu.main]]
     identifier = "about"
-    name = "About"
+    name = "ℹ️ About"
     url = "/about/"
     weight = 2
