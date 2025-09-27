@@ -1,92 +1,55 @@
-<!doctype html>
-<html lang="{{ .Site.Language.Lang }}" dir="{{ if eq .Site.Language.Lang "fa" }}rtl{{ else }}ltr{{ end }}">
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>{{ block "title" . }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
-
-  <style>
-    :root{--bg:#0b1220;--panel:#1f2933;--muted:#9aa6b2;--text:#e6eef6}
-    html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Vazirmatn",Arial}
-    header{position:fixed;top:0;left:0;right:0;height:72px;background:var(--panel);display:flex;align-items:center;justify-content:space-between;padding:12px 20px;z-index:50;border-bottom:1px solid rgba(255,255,255,0.02)}
-    .site-title{font-weight:800;font-size:20px}
-    main{max-width:1100px;margin:0 auto;padding:100px 20px 60px 20px;box-sizing:border-box}
-    /* language dropdown */
-    .lang-wrap{position:relative;display:inline-block}
-    .lang-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;background:#2a3940;color:var(--text);cursor:pointer;border:1px solid rgba(255,255,255,0.03)}
-    .lang-btn img{width:22px;height:14px;display:block}
-    .caret{width:10px;height:10px;opacity:.9}
-    .lang-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:160px;background:#fff;color:#111;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,.6);display:none;overflow:hidden;z-index:60}
-    .lang-menu a{display:flex;align-items:center;gap:10px;padding:8px 12px;text-decoration:none;color:#111}
-    .lang-menu a img{width:20px;height:12px}
-    .lang-menu a:hover{background:#f3f4f6}
-    .lang-wrap.open .lang-menu{display:block}
-    /* small responsive */
-    @media (max-width:640px){
-      main{padding-top:110px}
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+  {{ partial "head.html" . }}
+  <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
+<body class="bg-gray-900 text-white flex flex-col min-h-screen">
 
-  <header>
-    <div class="site-title">{{ .Site.Title }}</div>
+  <!-- Header -->
+  <header class="bg-gray-800 shadow-md">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
 
-    <div style="display:flex;align-items:center;gap:18px">
-      <!-- Language switcher -->
-      <div id="langWrap" class="lang-wrap">
-        <button id="langBtn" class="lang-btn" aria-haspopup="true" aria-expanded="false">
-          <img src="/flags/{{ .Site.Language.Lang }}.svg" alt="{{ .Site.Language.LanguageName }}">
-          <span style="font-weight:600">{{ .Site.Language.LanguageName }}</span>
-          <svg class="caret" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 8l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </button>
-
-        <div id="langMenu" class="lang-menu" role="menu" aria-hidden="true">
-          {{ range .Site.Languages }}
-            {{ if ne .Lang $.Site.Language.Lang }}
-              <a role="menuitem" href="{{ .Lang | relLangURL }}">
-                <img src="/flags/{{ .Lang }}.svg" alt="{{ .LanguageName }}">
-                <div style="font-weight:600">{{ .LanguageName }}</div>
-              </a>
-            {{ end }}
-          {{ end }}
-        </div>
+      <!-- Logo -->
+      <div class="text-2xl font-bold">
+        <a href="/" class="hover:text-gray-300">{{ .Site.Title }}</a>
       </div>
 
-      <!-- optional: other header links could be here -->
+      <!-- Language Switcher -->
+      <div class="relative">
+        <details class="group">
+          <summary class="flex items-center gap-2 cursor-pointer bg-gray-700 px-3 py-2 rounded-lg hover:bg-gray-600">
+            <img src="/flags/{{ .Site.Language.Lang }}.svg" alt="{{ .Site.Language.LanguageName }}" class="w-5 h-5">
+            <span>{{ .Site.Language.LanguageName }}</span>
+            <svg class="w-4 h-4 ml-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="absolute mt-2 bg-gray-700 rounded-lg shadow-lg py-2 w-40">
+            {{ range .Site.Languages }}
+              <a href="/{{ .Lang }}/" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-600">
+                <img src="/flags/{{ .Lang }}.svg" alt="{{ .LanguageName }}" class="w-5 h-5">
+                <span>{{ .LanguageName }}</span>
+              </a>
+            {{ end }}
+          </div>
+        </details>
+      </div>
     </div>
   </header>
 
-  <main>
+  <!-- Main Content -->
+  <main class="flex-grow container mx-auto px-6 py-8">
     {{ block "main" . }}{{ end }}
   </main>
 
-  <footer style="text-align:center;padding:18px 6px;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02)">
-    ساخته شده توسط مصطفی حیدری — © TechHub 2025
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-center py-4">
+    <p class="text-gray-400">© {{ now.Format "2006" }} TechHub — ساخته شده توسط مصطفی حیدری</p>
   </footer>
-
-<script>
-  // Dropdown toggle + close on outside click
-  (function(){
-    const wrap = document.getElementById('langWrap');
-    const btn = document.getElementById('langBtn');
-    const menu = document.getElementById('langMenu');
-
-    function openClose(e){
-      const isOpen = wrap.classList.contains('open');
-      if(isOpen){ wrap.classList.remove('open'); btn.setAttribute('aria-expanded','false'); menu.setAttribute('aria-hidden','true'); }
-      else { wrap.classList.add('open'); btn.setAttribute('aria-expanded','true'); menu.setAttribute('aria-hidden','false'); }
-    }
-
-    btn.addEventListener('click', function(e){ e.stopPropagation(); openClose(); });
-    // close if click outside
-    document.addEventListener('click', function(){ if(wrap.classList.contains('open')){ wrap.classList.remove('open'); btn.setAttribute('aria-expanded','false'); menu.setAttribute('aria-hidden','true'); } });
-    // keyboard: Esc to close
-    document.addEventListener('keydown', function(ev){ if(ev.key === 'Escape'){ wrap.classList.remove('open'); btn.setAttribute('aria-expanded','false'); menu.setAttribute('aria-hidden','true'); }});
-  })();
-</script>
 
 </body>
 </html>
