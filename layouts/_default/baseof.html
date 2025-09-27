@@ -1,82 +1,73 @@
-<!doctype html>
-<html lang="{{ .Site.Language.Lang }}" dir="{{ if eq .Site.Language.Lang "fa" }}rtl{{ else }}ltr{{ end }}">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>{{ if .Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Vazirmatn", Arial;
-      margin: 0;
-      background: #0b1220;
-      color: #e6eef6;
-    }
-    .wrap {
-      max-width: 980px;
-      margin: 28px auto;
-      padding: 18px;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    nav a {
-      color: #9aa6b2;
-      text-decoration: none;
-      font-size: 15px;
-    }
-    nav a:hover {
-      color: #fff;
-    }
-    .lang-switch {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      direction: ltr; /* همیشه از چپ به راست */
-    }
-    .card {
-      background: rgba(255, 255, 255, 0.02);
-      padding: 12px;
-      border-radius: 8px;
-      margin-top: 12px;
-    }
-    footer {
-      margin-top: 28px;
-      color: #9aa6b2;
-      text-align: center;
-      font-size: 14px;
-    }
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <header>
-      <div>
-        <h1 style="margin:0">{{ .Site.Title }}</h1>
-        <div style="color:#9aa6b2">{{ with .Site.Params.tagline }}{{ . }}{{ end }}</div>
-      </div>
-      <nav class="lang-switch">
-        <a href="{{ .Site.BaseURL }}">Home</a>
+<header>
+  <nav style="display:flex; gap:20px; align-items:center; padding:10px;">
+    <a href="{{ .Site.BaseURL }}">Home</a>
+
+    <div class="lang-dropdown">
+      <button class="lang-btn">
+        {{ .Site.Language.LanguageName }}
+        {{ if eq .Site.Language.Lang "fa" }} 🇮🇷 {{ end }}
+        {{ if eq .Site.Language.Lang "en" }} 🇬🇧 {{ end }}
+        {{ if eq .Site.Language.Lang "de" }} 🇩🇪 {{ end }}
+        ▼
+      </button>
+      <div class="lang-menu">
         {{ range .Site.Languages }}
-          <a href="{{ .Lang | relURL }}">
-            {{ .LanguageName }}
-            {{ if eq .Lang "fa" }}🇮🇷{{ end }}
-            {{ if eq .Lang "en" }}🇬🇧{{ end }}
-            {{ if eq .Lang "de" }}🇩🇪{{ end }}
-          </a>
+          {{ if ne .Lang $.Site.Language.Lang }}
+            <a href="{{ .Lang | relURL }}">
+              {{ .LanguageName }}
+              {{ if eq .Lang "fa" }} 🇮🇷 {{ end }}
+              {{ if eq .Lang "en" }} 🇬🇧 {{ end }}
+              {{ if eq .Lang "de" }} 🇩🇪 {{ end }}
+            </a>
+          {{ end }}
         {{ end }}
-      </nav>
-    </header>
+      </div>
+    </div>
+  </nav>
+</header>
 
-    <main>
-      {{ block "main" . }}{{ end }}
-    </main>
+<style>
+  .lang-dropdown {
+    position: relative;
+    display: inline-block;
+  }
 
-    <footer>
-      © {{ now.Format "2006" }} TechHub — ساخته شده توسط مصطفی حیدری
-    </footer>
-  </div>
-</body>
-</html>
+  .lang-btn {
+    background: transparent;
+    border: none;
+    color: #9aa6b2;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  .lang-btn:hover {
+    color: #fff;
+  }
+
+  .lang-menu {
+    display: none;
+    position: absolute;
+    background: #1a2233;
+    border: 1px solid #333;
+    border-radius: 6px;
+    margin-top: 6px;
+    min-width: 120px;
+    z-index: 10;
+  }
+
+  .lang-menu a {
+    display: block;
+    padding: 8px 12px;
+    color: #e6eef6;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .lang-menu a:hover {
+    background: #2a3244;
+  }
+
+  .lang-dropdown:hover .lang-menu {
+    display: block;
+  }
+</style>
