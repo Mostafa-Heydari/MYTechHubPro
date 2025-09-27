@@ -14,10 +14,10 @@ Here you can find my projects, courses, and services.
 - Project collaboration and freelance work
 
 ## Contact
-E-mail: [Mostafaheydari67.m@gmail.com]
+E-mail: Mostafaheydari67.m@gmail.com
 
-Telegram: [@YourHandle](https://t.me/YourHandle)
+Telegram: @YourHandle(https://t.me/YourHandle)
 
-Linkedin: [linkedin.com/in/mostafa-heydari]
+Linkedin: linkedin.com/in/mostafa-heydari
 
 Mobile: +989393714493
