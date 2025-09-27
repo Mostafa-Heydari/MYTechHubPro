@@ -1,13 +1,17 @@
-baseURL = "https://example.pages.dev/"
+baseURL = "/"
 title = "MYTechHubPro"
+languageCode = "fa"
 defaultContentLanguage = "fa"
 defaultContentLanguageInSubdir = true
-paginate = 6
+theme = "PaperMod"
+
+[pagination]
+  pagerSize = 5
 
 [params]
-  tagline = "مشاوره، آموزش و توسعه فناوری اطلاعات"
+  tagline = "مشاوره و آموزش حرفه‌ای در فناوری اطلاعات"
   author = "مصطفی حیدری"
-  description = "مرکز مشاوره و آموزش فناوری اطلاعات - زیرساخت، امنیت، توسعه وب و آموزش حرفه‌ای"
+  description = "خدمات مشاوره، دوره‌ها و پروژه‌های فناوری اطلاعات."
 
 [languages]
   [languages.fa]

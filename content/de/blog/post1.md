@@ -1,5 +1,5 @@
 ---
-title: "Einstieg in Cloud-Infrastruktur"
-summary: "Einführung in Cloud-Infrastruktur für kleine Unternehmen"
+title: "Beispiel Beitrag"
+summary: "Zusammenfassung."
 ---
-Beispielinhalt für deutschen Beitrag.
+Beispielinhalt.

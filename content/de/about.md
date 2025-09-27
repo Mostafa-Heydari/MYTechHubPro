@@ -1,5 +1,4 @@
 ---
-title: "Über mich"
+title: "Über"
 ---
-
-Ich bin Mostafa Heydari, Infrastruktur- und Sicherheitsberater mit jahrelanger Erfahrung.
+Über uns Informationen.

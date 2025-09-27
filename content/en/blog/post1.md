@@ -1,5 +1,5 @@
 ---
-title: "Getting started with cloud infra"
-summary: "Intro to cloud infrastructure for small businesses"
+title: "Sample post"
+summary: "Post summary."
 ---
-Sample content for English post.
+Sample content.
