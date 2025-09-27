@@ -1,36 +1,39 @@
 {{ define "main" }}
-<main class="container mx-auto px-6 py-12 text-gray-100">
-  
-  <!-- بخش معرفی -->
-  <section class="mb-16 text-center">
-    <h1 class="text-4xl font-bold mb-4">سلام 👋 من مصطفی حیدری هستم</h1>
-    <p class="text-lg text-gray-300 max-w-2xl mx-auto">
-      مشاور و مدرس فناوری اطلاعات — زیرساخت، امنیت و توسعه وب.
-      اینجا می‌توانید پروژه‌ها، دوره‌ها و خدمات من را پیدا کنید.
-    </p>
+  <section class="text-center">
+    <h1 class="text-3xl font-bold mb-4">{{ .Title }}</h1>
+    <div class="prose prose-lg mx-auto text-gray-300">
+      {{ .Content }}
+    </div>
   </section>
 
-  <!-- خدمات -->
-  <section class="mb-16">
-    <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-6">خدمات</h2>
-    <ul class="space-y-3 text-lg">
-      <li>✅ مشاوره فنی و طراحی زیرساخت</li>
-      <li>✅ راه‌اندازی و بهینه‌سازی سرور/شبکه</li>
-      <li>✅ آموزش ویدئویی و دوره‌های آنلاین</li>
-      <li>✅ همکاری در پروژه‌ها و فریلنسینگ</li>
+  <!-- Contact Section -->
+  <section class="mt-10">
+    <h2 class="text-xl font-bold mb-4">تماس</h2>
+    <ul class="space-y-3">
+      <li class="flex items-center space-x-2">
+        <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M1.5 4.5l10.5 7.5L22.5 4.5v15h-21v-15z" />
+        </svg>
+        <a href="mailto:Mostafaheydari67.m@gmail.com" class="hover:text-blue-400 transition">
+          Mostafaheydari67.m@gmail.com
+        </a>
+      </li>
+
+      <li class="flex items-center space-x-2">
+        <svg class="w-5 h-5 text-sky-400" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M9.04 13.35L8.82 17.89c.6 0 .86-.26 1.18-.57l2.82-2.68 5.85 4.29c1.07.59 1.83.28 2.11-1l3.83-17.9-.01-.01c.34-1.6-.58-2.24-1.63-1.85L.95 9.22c-1.57.62-1.55 1.51-.27 1.9l6.36 1.96 14.72-9.29-12.72 10.41z"/>
+        </svg>
+        <a href="https://t.me/YourHandle" class="hover:text-sky-400 transition">@YourHandle</a>
+      </li>
+
+      <li class="flex items-center space-x-2">
+        <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M4.98 3.5C3.32 3.5 2 4.83 2 6.5c0 1.67 1.32 3 2.98 3 1.65 0 2.98-1.33 2.98-3 0-1.67-1.33-3-2.98-3zM2.4 8.98H7.6V21H2.4V8.98zM9.24 8.98H14v1.6h.08c.66-1.24 2.27-2.55 4.67-2.55 4.98 0 5.9 3.28 5.9 7.55V21H19.6v-6.43c0-1.53-.03-3.5-2.13-3.5-2.14 0-2.47 1.67-2.47 3.39V21H9.24V8.98z"/>
+        </svg>
+        <a href="https://linkedin.com/in/mostafa-heydari" class="hover:text-blue-600 transition">
+          linkedin.com/in/mostafa-heydari
+        </a>
+      </li>
     </ul>
   </section>
-
-  <!-- تماس -->
-  <section>
-    <h2 class="text-2xl font-semibold border-b border-gray-700 pb-2 mb-6">تماس</h2>
-    <ul class="space-y-4 text-lg">
-      <li>📧 ایمیل: <a href="mailto:mostafaheydari67.m@gmail.com" class="text-blue-400 hover:underline">mostafaheydari67.m@gmail.com</a></li>
-      <li>💬 تلگرام: <a href="https://t.me/YourHandle" class="text-blue-400 hover:underline">@YourHandle</a></li>
-      <li>🔗 لینکدین: <a href="https://linkedin.com/in/mostafa-heydari" class="text-blue-400 hover:underline">linkedin.com/in/mostafa-heydari</a></li>
-      <li>📱 موبایل: <span class="text-gray-300">+989393714493</span></li>
-    </ul>
-  </section>
-
-</main>
 {{ end }}
