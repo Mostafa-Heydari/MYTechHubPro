@@ -1,0 +1,41 @@
+baseURL = "/"
+languageCode = "en"
+title = "MYTechHubPro"
+theme = "PaperMod"
+
+[pagination]
+  pagerSize = 10
+
+defaultContentLanguage = "fa"
+defaultContentLanguageInSubdir = true
+
+[languages]
+
+  [languages.fa]
+    languageName = "فارسی 🇮🇷"
+    weight = 1
+    contentDir = "content/fa"
+
+  [languages.en]
+    languageName = "English 🇬🇧"
+    weight = 2
+    contentDir = "content/en"
+
+  [languages.de]
+    languageName = "Deutsch 🇩🇪"
+    weight = 3
+    contentDir = "content/de"
+
+[menu]
+
+  [[menu.main]]
+    identifier = "home"
+    name = "🏠 Home"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "about"
+    name = "ℹ️ About"
+    url = "/about/"
+    weight = 2
