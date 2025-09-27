@@ -14,5 +14,11 @@ title = "خانه"
 - همکاری در پروژه‌ها و فریلنسینگ
 
 ## تماس
-ایمیل: Mostafaheydari67.m@gmail.com  
-تلگرام: [@YourHandle](https://t.me/YourHandle)
+
+E-mail: Mostafaheydari67.m@gmail.com
+
+Telegram: [@YourHandle](https://t.me/YourHandle)
+
+Linkedin: Linkedin.com/in/mostafa-heydari
+
+Mobile: +989393714493
