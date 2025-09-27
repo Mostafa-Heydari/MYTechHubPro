@@ -1,74 +1,102 @@
-<!DOCTYPE html>
-<html lang="{{ .Site.Language.Lang }}">
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}" dir="{{ if eq .Site.Language.Lang "fa" }}rtl{{ else }}ltr{{ end }}">
 <head>
-  <meta charset="UTF-8">
-  <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {{- partial "head.html" . -}}
-  <script src="//unpkg.com/alpinejs" defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{ .Title }} - {{ .Site.Title }}</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto,"Vazirmatn",Arial;
+      margin: 0;
+      background: #0b1220;
+      color: #e6eef6;
+    }
+    .wrap { max-width: 980px; margin: 28px auto; padding: 18px; }
+    header { display: flex; justify-content: space-between; align-items: center; }
+    nav a { margin-left: 10px; color: #9aa6b2; text-decoration: none; }
+    nav a:hover { color: #fff; }
+    .card { background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; margin-top: 12px; }
+
+    /* منوی زبان */
+    .lang-btn {
+      display: flex; align-items: center; padding: 6px 10px;
+      background: #1f2937; color: #fff;
+      border-radius: 6px; cursor: pointer;
+    }
+    .lang-btn:hover { background: #374151; }
+    .lang-btn img { width: 20px; height: 20px; margin-right: 6px; }
+    .lang-menu {
+      display: none;
+      position: absolute;
+      right: 0; margin-top: 6px;
+      background: #fff; color: #000;
+      border-radius: 6px;
+      min-width: 140px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      z-index: 50;
+    }
+    .lang-menu a {
+      display: flex; align-items: center;
+      padding: 8px 12px; font-size: 14px;
+      text-decoration: none; color: #333;
+    }
+    .lang-menu a:hover { background: #f3f4f6; }
+    .lang-menu img { width: 18px; height: 18px; margin-right: 6px; }
+  </style>
 </head>
-<body class="bg-gray-900 text-gray-100">
-
-  <!-- Header -->
-  <header class="bg-gray-800 shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-
-      <!-- Logo / Title -->
-      <div class="flex items-center space-x-3">
-        <a href="/" class="text-xl font-bold text-white hover:text-yellow-400">
-          {{ .Site.Title }}
-        </a>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1 style="margin:0">{{ .Site.Title }}</h1>
+        <div style="color:#9aa6b2">{{ with .Site.Params.tagline }}{{ . }}{{ end }}</div>
       </div>
 
-      <!-- Navigation -->
-      <nav class="flex items-center gap-6">
+      <!-- ناوبری -->
+      <nav style="display:flex;align-items:center;gap:15px;">
+        <a href="{{ .Site.BaseURL }}">Home</a>
 
-        <!-- Menu -->
-        {{ $currentPage := . }}
-        {{ range .Site.Menus.main }}
-          <a href="{{ .URL }}" class="hover:text-yellow-400 {{ if $currentPage.IsMenuCurrent "main" . }}text-yellow-400 font-semibold{{ end }}">
-            {{ .Name }}
-          </a>
-        {{ end }}
-
-        <!-- Language Switcher -->
-        <div x-data="{ open: false }" class="relative">
-          <button @click="open = !open"
-                  class="flex items-center gap-2 px-3 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 focus:outline-none">
-            <span>{{ .Site.Language.LanguageName }}</span>
-            <img src="/flags/{{ .Site.Language.Lang }}.svg" alt="{{ .Site.Language.LanguageName }}" class="w-5 h-5 rounded-sm" />
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        <!-- منوی زبان -->
+        <div class="relative" style="position:relative;">
+          <div id="langBtn" class="lang-btn">
+            <img src="/flags/fa.svg" alt="فارسی" id="current-flag">
+            <span id="current-lang">فارسی</span>
+            <svg style="width:16px;height:16px;margin-left:6px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 9l-7 7-7-7"/>
             </svg>
-          </button>
-
-          <!-- Dropdown -->
-          <div x-show="open" @click.away="open = false"
-               class="absolute right-0 mt-2 w-40 bg-white text-gray-800 rounded-lg shadow-lg overflow-hidden z-50">
-            {{ range .Site.Languages }}
-              {{ if ne $.Site.Language.Lang .Lang }}
-                <a href="{{ .Lang | relLangURL }}" class="flex items-center gap-2 px-4 py-2 hover:bg-gray-100">
-                  <img src="/flags/{{ .Lang }}.svg" alt="{{ .LanguageName }}" class="w-5 h-5 rounded-sm" />
-                  {{ .LanguageName }}
-                </a>
-              {{ end }}
-            {{ end }}
+          </div>
+          <div id="langMenu" class="lang-menu">
+            <a href="/fa/"><img src="/flags/fa.svg" alt="فارسی"> فارسی</a>
+            <a href="/en/"><img src="/flags/en.svg" alt="English"> English</a>
+            <a href="/de/"><img src="/flags/de.svg" alt="Deutsch"> Deutsch</a>
           </div>
         </div>
-
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <!-- Main -->
-  <main class="max-w-5xl mx-auto px-4 py-10">
-    {{ block "main" . }}{{ end }}
-  </main>
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
 
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-gray-400 text-center py-6 mt-10">
-    <p>© {{ now.Year }} {{ .Site.Title }}. All rights reserved.</p>
-  </footer>
+    <footer style="margin-top:28px;color:#9aa6b2">
+      © {{ now.Format "2006" }} TechHub — ساخته شده توسط مصطفی حیدری
+    </footer>
+  </div>
 
+  <script>
+    const langBtn = document.getElementById('langBtn');
+    const langMenu = document.getElementById('langMenu');
+
+    langBtn.addEventListener('click', () => {
+      langMenu.style.display = langMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (!langBtn.contains(e.target)) {
+        langMenu.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
