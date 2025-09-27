@@ -1,73 +1,117 @@
-<header>
-  <nav style="display:flex; gap:20px; align-items:center; padding:10px;">
-    <a href="{{ .Site.BaseURL }}">Home</a>
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+  {{ partial "head.html" . }}
+</head>
+<body>
+  <header>
+    <nav style="display:flex; gap:20px; align-items:center; padding:15px;">
+      <a href="{{ .Site.BaseURL }}" style="color:#fff; text-decoration:none; font-weight:bold;">
+        Home
+      </a>
 
-    <div class="lang-dropdown">
-      <button class="lang-btn">
-        {{ .Site.Language.LanguageName }}
-        {{ if eq .Site.Language.Lang "fa" }} 🇮🇷 {{ end }}
-        {{ if eq .Site.Language.Lang "en" }} 🇬🇧 {{ end }}
-        {{ if eq .Site.Language.Lang "de" }} 🇩🇪 {{ end }}
-        ▼
-      </button>
-      <div class="lang-menu">
-        {{ range .Site.Languages }}
-          {{ if ne .Lang $.Site.Language.Lang }}
-            <a href="{{ .Lang | relURL }}">
-              {{ .LanguageName }}
-              {{ if eq .Lang "fa" }} 🇮🇷 {{ end }}
-              {{ if eq .Lang "en" }} 🇬🇧 {{ end }}
-              {{ if eq .Lang "de" }} 🇩🇪 {{ end }}
-            </a>
+      <!-- Dropdown -->
+      <div class="lang-dropdown">
+        <button class="lang-btn" onclick="toggleLangMenu()">
+          {{ .Site.Language.LanguageName }}
+          {{ if eq .Site.Language.Lang "fa" }} 🇮🇷 {{ end }}
+          {{ if eq .Site.Language.Lang "en" }} 🇬🇧 {{ end }}
+          {{ if eq .Site.Language.Lang "de" }} 🇩🇪 {{ end }}
+          ▼
+        </button>
+        <div id="langMenu" class="lang-menu">
+          {{ range .Site.Languages }}
+            {{ if ne .Lang $.Site.Language.Lang }}
+              <a href="{{ .Lang | relURL }}">
+                {{ .LanguageName }}
+                {{ if eq .Lang "fa" }} 🇮🇷 {{ end }}
+                {{ if eq .Lang "en" }} 🇬🇧 {{ end }}
+                {{ if eq .Lang "de" }} 🇩🇪 {{ end }}
+              </a>
+            {{ end }}
           {{ end }}
-        {{ end }}
+        </div>
       </div>
-    </div>
-  </nav>
-</header>
+    </nav>
+  </header>
 
-<style>
-  .lang-dropdown {
-    position: relative;
-    display: inline-block;
-  }
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
 
-  .lang-btn {
-    background: transparent;
-    border: none;
-    color: #9aa6b2;
-    font-size: 15px;
-    cursor: pointer;
-  }
+  <footer style="text-align:center; margin:30px 0; color:#aaa;">
+    © {{ now.Year }} {{ .Site.Title }} — ساخته شده توسط مصطفی حیدری
+  </footer>
 
-  .lang-btn:hover {
-    color: #fff;
-  }
+  <style>
+    body {
+      background:#0d1117;
+      color:#e6eef6;
+      font-family: "Vazir", sans-serif;
+    }
 
-  .lang-menu {
-    display: none;
-    position: absolute;
-    background: #1a2233;
-    border: 1px solid #333;
-    border-radius: 6px;
-    margin-top: 6px;
-    min-width: 120px;
-    z-index: 10;
-  }
+    .lang-dropdown {
+      position: relative;
+      display: inline-block;
+    }
 
-  .lang-menu a {
-    display: block;
-    padding: 8px 12px;
-    color: #e6eef6;
-    text-decoration: none;
-    font-size: 14px;
-  }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: #9aa6b2;
+      font-size: 15px;
+      cursor: pointer;
+    }
 
-  .lang-menu a:hover {
-    background: #2a3244;
-  }
+    .lang-btn:hover {
+      color: #fff;
+    }
 
-  .lang-dropdown:hover .lang-menu {
-    display: block;
-  }
-</style>
+    .lang-menu {
+      display: none;
+      position: absolute;
+      background: #1a2233;
+      border: 1px solid #333;
+      border-radius: 6px;
+      margin-top: 6px;
+      min-width: 150px;
+      z-index: 10;
+    }
+
+    .lang-menu a {
+      display: block;
+      padding: 8px 12px;
+      color: #e6eef6;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .lang-menu a:hover {
+      background: #2a3244;
+    }
+
+    .lang-menu.show {
+      display: block;
+    }
+  </style>
+
+  <script>
+    function toggleLangMenu() {
+      document.getElementById("langMenu").classList.toggle("show");
+    }
+
+    // بستن منو وقتی بیرون کلیک شد
+    window.addEventListener("click", function(event) {
+      if (!event.target.matches('.lang-btn')) {
+        let dropdowns = document.getElementsByClassName("lang-menu");
+        for (let i = 0; i < dropdowns.length; i++) {
+          dropdowns[i].classList.remove("show");
+        }
+      }
+    });
+  </script>
+</body>
+</html>
