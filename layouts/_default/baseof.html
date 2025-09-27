@@ -6,42 +6,118 @@
   <title>{{ .Title }} - {{ .Site.Title }}</title>
   <style>
     body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto,"Vazirmatn",Arial;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Vazirmatn", Arial;
       margin: 0;
       background: #0b1220;
       color: #e6eef6;
     }
-    .wrap { max-width: 980px; margin: 28px auto; padding: 18px; }
-    header { display: flex; justify-content: space-between; align-items: center; }
-    nav a { margin-left: 10px; color: #9aa6b2; text-decoration: none; }
-    nav a:hover { color: #fff; }
-    .card { background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; margin-top: 12px; }
-
-    /* منوی زبان */
-    .lang-btn {
-      display: flex; align-items: center; padding: 6px 10px;
-      background: #1f2937; color: #fff;
-      border-radius: 6px; cursor: pointer;
+    .wrap {
+      max-width: 980px;
+      margin: 28px auto;
+      padding: 18px;
     }
-    .lang-btn:hover { background: #374151; }
-    .lang-btn img { width: 20px; height: 20px; margin-right: 6px; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    nav a {
+      color: #9aa6b2;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #fff;
+    }
+    /* زبان */
     .lang-menu {
+      position: relative;
+    }
+    .lang-btn {
+      background: none;
+      border: 1px solid #3b445c;
+      border-radius: 6px;
+      padding: 6px 10px;
+      color: #e6eef6;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .lang-btn img {
+      width: 18px;
+      height: 18px;
+      border-radius: 3px;
+    }
+    .lang-dropdown {
       display: none;
       position: absolute;
-      right: 0; margin-top: 6px;
-      background: #fff; color: #000;
+      top: 110%;
+      right: 0;
+      background: #1a2238;
+      border: 1px solid #2a3248;
       border-radius: 6px;
-      min-width: 140px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      z-index: 50;
+      min-width: 120px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      z-index: 20;
     }
-    .lang-menu a {
-      display: flex; align-items: center;
-      padding: 8px 12px; font-size: 14px;
-      text-decoration: none; color: #333;
+    .lang-dropdown a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      color: #e6eef6;
+      text-decoration: none;
+      font-size: 14px;
     }
-    .lang-menu a:hover { background: #f3f4f6; }
-    .lang-menu img { width: 18px; height: 18px; margin-right: 6px; }
+    .lang-dropdown a:hover {
+      background: #2a3248;
+    }
+    .lang-dropdown img {
+      width: 18px;
+      height: 18px;
+      border-radius: 3px;
+    }
+    .lang-menu:hover .lang-dropdown {
+      display: block;
+    }
+
+    /* کارت‌ها */
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 14px;
+      border-radius: 10px;
+      margin-top: 14px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* شبکه‌های اجتماعی */
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+    .social-links a {
+      color: #9aa6b2;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+    .social-links a:hover {
+      color: #1da1f2; /* آبی توییتر/تلگرام */
+    }
+
+    footer {
+      margin-top: 28px;
+      color: #9aa6b2;
+      text-align: center;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
@@ -50,26 +126,28 @@
       <div>
         <h1 style="margin:0">{{ .Site.Title }}</h1>
         <div style="color:#9aa6b2">{{ with .Site.Params.tagline }}{{ . }}{{ end }}</div>
+        <div class="social-links">
+          <a href="https://t.me/YourTelegram" aria-label="Telegram">📨</a>
+          <a href="https://linkedin.com/in/YourLinkedIn" aria-label="LinkedIn">💼</a>
+          <a href="https://github.com/YourGithub" aria-label="GitHub">💻</a>
+        </div>
       </div>
-
-      <!-- ناوبری -->
-      <nav style="display:flex;align-items:center;gap:15px;">
+      <nav>
         <a href="{{ .Site.BaseURL }}">Home</a>
-
-        <!-- منوی زبان -->
-        <div class="relative" style="position:relative;">
-          <div id="langBtn" class="lang-btn">
-            <img src="/flags/fa.svg" alt="فارسی" id="current-flag">
-            <span id="current-lang">فارسی</span>
-            <svg style="width:16px;height:16px;margin-left:6px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M19 9l-7 7-7-7"/>
-            </svg>
-          </div>
-          <div id="langMenu" class="lang-menu">
-            <a href="/fa/"><img src="/flags/fa.svg" alt="فارسی"> فارسی</a>
-            <a href="/en/"><img src="/flags/en.svg" alt="English"> English</a>
-            <a href="/de/"><img src="/flags/de.svg" alt="Deutsch"> Deutsch</a>
+        <div class="lang-menu">
+          <button class="lang-btn">
+            <img src="/flags/{{ .Site.Language.Lang }}.svg" alt="{{ .Site.Language.LanguageName }}" />
+            <span>{{ .Site.Language.LanguageName }}</span>
+          </button>
+          <div class="lang-dropdown">
+            {{ range .Site.Languages }}
+              {{ if ne $.Site.Language.Lang .Lang }}
+                <a href="{{ .Lang | relURL }}">
+                  <img src="/flags/{{ .Lang }}.svg" alt="{{ .LanguageName }}" />
+                  {{ .LanguageName }}
+                </a>
+              {{ end }}
+            {{ end }}
           </div>
         </div>
       </nav>
@@ -79,24 +157,9 @@
       {{ block "main" . }}{{ end }}
     </main>
 
-    <footer style="margin-top:28px;color:#9aa6b2">
+    <footer>
       © {{ now.Format "2006" }} TechHub — ساخته شده توسط مصطفی حیدری
     </footer>
   </div>
-
-  <script>
-    const langBtn = document.getElementById('langBtn');
-    const langMenu = document.getElementById('langMenu');
-
-    langBtn.addEventListener('click', () => {
-      langMenu.style.display = langMenu.style.display === 'block' ? 'none' : 'block';
-    });
-
-    window.addEventListener('click', (e) => {
-      if (!langBtn.contains(e.target)) {
-        langMenu.style.display = 'none';
-      }
-    });
-  </script>
 </body>
 </html>
