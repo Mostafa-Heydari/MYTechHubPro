@@ -1,46 +1,48 @@
-baseURL = "https://example.pages.dev/"
-title = "MYTechHubPro"
-languageCode = "fa"
+baseURL = "https://yourdomain.com/"
+title = "MY Tech Hub Pro"
+theme = "protheme"
 defaultContentLanguage = "fa"
-defaultContentLanguageInSubdir = true
-theme = "mytheme"
+hasCJKLanguage = true
 
-[pagination]
-  pagerSize = 6
+# تنظیمات منو
+[menu]
 
-[params]
-  author = "Mostafa Heydari"
-  tagline = "مشاوره و آموزش حرفه‌ای در فناوری اطلاعات"
-  description = "خدمات مشاوره، دوره‌ها و پروژه‌های عملی"
-  primaryColor = "#1E88E5"
-  accentColor = "#43A047"
-  neutral = "#F6F2EB"
-  formspree = "https://formspree.io/f/your-form-id" # replace with your Formspree form id
+  [[menu.main]]
+  identifier = "home"
+  name = "خانه"
+  url = "/"
+  weight = 1
 
+  [[menu.main]]
+  identifier = "about"
+  name = "درباره ما"
+  url = "/about/"
+  weight = 2
+
+  [[menu.main]]
+  identifier = "contact"
+  name = "تماس با ما"
+  url = "/contact/"
+  weight = 3
+
+# تنظیمات زبان‌ها
 [languages]
+
   [languages.fa]
-    languageName = "فارسی"
-    weight = 1
-    contentDir = "content/fa"
+  weight = 1
+  languageName = "فارسی"
+  contentDir = "content/fa"
 
   [languages.en]
-    languageName = "English"
-    weight = 2
-    contentDir = "content/en"
+  weight = 2
+  languageName = "English"
+  contentDir = "content/en"
 
   [languages.de]
-    languageName = "Deutsch"
-    weight = 3
-    contentDir = "content/de"
+  weight = 3
+  languageName = "Deutsch"
+  contentDir = "content/de"
 
-[menu]
-  [[menu.main]]
-    identifier = "home"; name = "Home"; url = "/"; weight = 1
-  [[menu.main]]
-    identifier = "about"; name = "About"; url = "/about/"; weight = 2
-  [[menu.main]]
-    identifier = "services"; name = "Services"; url = "/services/"; weight = 3
-  [[menu.main]]
-    identifier = "blog"; name = "Blog"; url = "/blog/"; weight = 4
-  [[menu.main]]
-    identifier = "contact"; name = "Contact"; url = "/contact/"; weight = 5
+# تنظیمات pagination (جدید به جای paginate)
+[pagination]
+pagerSize = 10
