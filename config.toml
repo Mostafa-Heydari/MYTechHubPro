@@ -1,13 +1,13 @@
-baseURL = "https://yourdomain.com/"
+baseURL = "https://mytechhubpro24.pages.dev/"
 languageCode = "en"
 title = "MYTechHubPro"
 theme = "PaperMod"
 
-# پیکربندی جدید paginate
+# صفحه‌بندی جدید
 [pagination]
   pagerSize = 10
 
-# تنظیمات زبان‌ها (چند زبانه)
+# تنظیمات زبان‌ها
 defaultContentLanguage = "fa"
 defaultContentLanguageInSubdir = true
 
@@ -33,20 +33,4 @@ defaultContentLanguageInSubdir = true
     identifier = "about"
     name = "About"
     url = "/about/"
-    weight = 10
-
-  [[menu.main]]
-    identifier = "blog"
-    name = "Blog"
-    url = "/posts/"
-    weight = 20
-
-# PaperMod تنظیمات
-[params]
-  env = "production"
-  defaultTheme = "auto"
-  showReadingTime = true
-  showShareButtons = true
-  showPostNavLinks = true
-  showBreadCrumbs = true
-  showCodeCopyButtons = true
+    weight = 1
