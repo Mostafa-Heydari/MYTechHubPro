@@ -1,0 +1,46 @@
+baseURL = "https://example.pages.dev/"
+title = "MYTechHubPro"
+languageCode = "fa"
+defaultContentLanguage = "fa"
+defaultContentLanguageInSubdir = true
+theme = "mytheme"
+
+[pagination]
+  pagerSize = 6
+
+[params]
+  author = "Mostafa Heydari"
+  tagline = "مشاوره و آموزش حرفه‌ای در فناوری اطلاعات"
+  description = "خدمات مشاوره، دوره‌ها و پروژه‌های عملی"
+  primaryColor = "#1E88E5"
+  accentColor = "#43A047"
+  neutral = "#F6F2EB"
+  formspree = "https://formspree.io/f/your-form-id" # replace with your Formspree form id
+
+[languages]
+  [languages.fa]
+    languageName = "فارسی"
+    weight = 1
+    contentDir = "content/fa"
+
+  [languages.en]
+    languageName = "English"
+    weight = 2
+    contentDir = "content/en"
+
+  [languages.de]
+    languageName = "Deutsch"
+    weight = 3
+    contentDir = "content/de"
+
+[menu]
+  [[menu.main]]
+    identifier = "home"; name = "Home"; url = "/"; weight = 1
+  [[menu.main]]
+    identifier = "about"; name = "About"; url = "/about/"; weight = 2
+  [[menu.main]]
+    identifier = "services"; name = "Services"; url = "/services/"; weight = 3
+  [[menu.main]]
+    identifier = "blog"; name = "Blog"; url = "/blog/"; weight = 4
+  [[menu.main]]
+    identifier = "contact"; name = "Contact"; url = "/contact/"; weight = 5

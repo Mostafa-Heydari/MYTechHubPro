@@ -1,0 +1,29 @@
+<header class="header">
+  <div class="container header-inner" style="display:flex;align-items:center;justify-content:space-between">
+    <div class="brand" style="display:flex;align-items:center;gap:12px">
+      <div class="logo"><img src="{{ "images/logo.svg" | relURL }}" alt="logo" style="width:48px;height:48px"></div>
+      <div>
+        <div class="site-title">{{ .Site.Title }}</div>
+        <div class="small-muted">{{ .Site.Params.tagline }}</div>
+      </div>
+    </div>
+    <nav class="nav">
+      {{ range .Site.Menus.main }}
+        <a href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+      {{ end }}
+    </nav>
+    <div style="position:relative">
+      <button class="lang-btn" aria-haspopup="true">
+        <img src="{{ "flags/" | relURL }}{{ .Site.Language.Lang }}.svg" style="width:22px;height:14px;display:inline-block;margin-right:6px"/>
+        <span>{{ .Site.Language.LanguageName }}</span>
+      </button>
+      <div class="lang-menu" style="display:none;position:absolute;right:0;">
+        {{ range .Site.Languages }}
+          {{ if ne .Lang $.Site.Language.Lang }}
+            <div class="lang-item"><a class="lang-action" data-lang="{{ .Lang }}" href="javascript:void(0)"><img src="{{ "flags/" | relURL }}{{ .Lang }}.svg" style="width:20px;height:12px;margin-right:8px"/> {{ .LanguageName }}</a></div>
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</header>
