@@ -7,10 +7,11 @@ theme = "PaperMod"
 [pagination]
   pagerSize = 10
 
-# تنظیمات زبان‌ها
+# زبان پیش‌فرض
 defaultContentLanguage = "fa"
 defaultContentLanguageInSubdir = true
 
+# تنظیمات زبان‌ها
 [languages]
   [languages.fa]
     languageName = "فارسی"
@@ -30,7 +31,31 @@ defaultContentLanguageInSubdir = true
 # منوها
 [menu]
   [[menu.main]]
+    identifier = "home"
+    name = "خانه"
+    url = "/"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "fa"
+    name = "فارسی"
+    url = "/fa/"
+    weight = 2
+
+  [[menu.main]]
+    identifier = "en"
+    name = "English"
+    url = "/en/"
+    weight = 3
+
+  [[menu.main]]
+    identifier = "de"
+    name = "Deutsch"
+    url = "/de/"
+    weight = 4
+
+  [[menu.main]]
     identifier = "about"
     name = "About"
     url = "/about/"
-    weight = 1
+    weight = 5
