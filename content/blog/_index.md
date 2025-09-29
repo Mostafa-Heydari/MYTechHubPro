@@ -1,2 +1,0 @@
-# Blog
-Our latest articles.
