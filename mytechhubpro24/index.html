@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل مدیریت پیشرفته - MYTechHubPro24</title>
+
+    <!-- Tailwind CSS نهایی (مینیفای شده) -->
+    <link href="tailwind.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body class="bg-slate-900 text-slate-300 font-persian">
+    <nav class="navbar container mx-auto flex justify-between py-4">
+        <h1 class="text-3xl text-gradient">MYTechHubPro24</h1>
+        <button id="mobile-menu-btn" class="text-white border rounded px-3 py-1">منو</button>
+    </nav>
+
+    <div id="mobile-menu" class="mobile-menu container mx-auto bg-slate-900 text-center py-4">
+        <a href="#home" class="block text-slate-300 hover:text-white">خانه</a>
+        <a href="#about" class="block text-slate-300 hover:text-white">درباره</a>
+        <a href="#contact" class="block text-slate-300 hover:text-white">تماس</a>
+    </div>
+
+    <section id="home" class="container mx-auto text-center py-16">
+        <h2 class="text-3xl text-gradient">به وبسایت من خوش آمدید</h2>
+        <p class="text-slate-400 mt-4">این نسخه نهایی اصلاح‌شده است.</p>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if(mobileMenuBtn && mobileMenu){
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('open');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
