@@ -1,26 +1,26 @@
----
 backend:
   name: github
   repo: Mostafa-Heydari/MYTechHubPro
   branch: main
   auth_scope: repo
   open_authoring: false
-  site_domain: https://mytechhubpro.vercel.app
+  site_domain: "https://mytechhubpro.vercel.app"
+
 auth:
-  client_id: Ov23li4nijegVW5a92Zh
-  redirect_uri: https://mytechhubpro.vercel.app/admin/
-media_folder: static/images/uploads
-public_folder: /images/uploads
+  client_id: "Ov23li4nijegVW5a92Zh"
+  redirect_uri: "https://mytechhubpro.vercel.app/admin/"
+
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+
 collections:
-  - name: pages
-    label: صفحات
-folder: content/pages
-create: true
-slug: "{{slug}}"
-fields:
-  - label: عنوان
-    name: title
-    widget: string
-  - label: محتوا
-    name: body
-    widget: markdown
+  - name: "pages"
+    label: "صفحات"
+    folder: "content/pages"
+    create: true
+    slug:
+      encoding: "unicode"
+      clean_accents: true
+    fields:
+      - { label: "عنوان", name: "title", widget: "string" }
+      - { label: "محتوا", name: "body", widget: "markdown" }
