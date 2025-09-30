@@ -1,2279 +1,420 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>پنل مدیریت پیشرفته - MYTechHubPro24</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>متخصص شبکه و زیرساخت - MYTechHubPro24</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
         body {
-            box-sizing: border-box;
-        }
-        
-        .font-persian {
             font-family: 'Vazirmatn', sans-serif;
+            background-color: #0f172a;
+            color: #cbd5e1;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
         }
-        
-        .rtl { direction: rtl; }
-        .ltr { direction: ltr; }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-        }
-        
-        .text-gradient {
-            background: linear-gradient(135deg, #64ffda 0%, #00bcd4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .brand-logo-main {
-            background: linear-gradient(135deg, #64ffda 0%, #00bcd4 30%, #0891b2 60%, #0e7490 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        /* بک‌گراند صفحه اصلی */
+        #home {
             position: relative;
-            display: inline-block;
-            text-shadow: 0 0 40px rgba(100, 255, 218, 0.4);
-            letter-spacing: 0.1em;
-            font-weight: 900;
+            min-height: 100vh;
+            background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
         }
-        
-        .brand-logo-main::before {
+        #home::before {
             content: '';
             position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            background: linear-gradient(135deg, rgba(100, 255, 218, 0.2), rgba(0, 188, 212, 0.2), rgba(8, 145, 178, 0.2));
-            border-radius: 16px;
-            z-index: -1;
-            filter: blur(12px);
-            animation: brandGlow 3s ease-in-out infinite alternate;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.75); /* overlay تاریک */
+            z-index: 0;
         }
-        
-        @keyframes brandGlow {
-            0% { opacity: 0.1; transform: scale(1); }
-            100% { opacity: 0.3; transform: scale(1.05); }
+        #home > .content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            padding: 20px;
         }
-
-        /* Navigation Styles */
-        .navbar {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+        h1, h2, p {
+            margin: 0 0 1rem 0;
         }
-
-        .nav-link {
-            color: #94a3b8;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #64ffda, #00bcd4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        .nav-link:hover {
-            color: #64ffda;
-            background: rgba(100, 255, 218, 0.1);
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
         }
-
-        .nav-link.active {
-            color: #64ffda;
-            background: rgba(100, 255, 218, 0.1);
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #a0aec0;
         }
-
-        /* Section Styles */
-        .section {
-            min-height: 100vh;
-            padding: 5rem 0;
-        }
-
-        .card {
-            background: rgba(30, 41, 59, 0.8);
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            border-radius: 1rem;
-            padding: 2rem;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            border-color: rgba(100, 255, 218, 0.3);
-            transform: translateY(-5px);
-        }
-
-        .skill-bar {
-            background: rgba(51, 65, 85, 0.5);
-            border-radius: 1rem;
-            overflow: hidden;
-            height: 0.5rem;
-        }
-
-        .skill-progress {
-            background: linear-gradient(90deg, #64ffda 0%, #00bcd4 100%);
-            height: 100%;
-            border-radius: 1rem;
-            transition: width 1s ease;
-        }
-
-        /* Blog Styles */
-        .blog-card {
-            background: rgba(30, 41, 59, 0.8);
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            border-radius: 1rem;
-            overflow: hidden;
+        /* دکمه‌ها */
+        .btn-primary {
+            background: linear-gradient(90deg, #64ffda, #00bcd4);
+            color: #0f172a;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 8px 15px rgba(100, 255, 218, 0.3);
             transition: all 0.3s ease;
             cursor: pointer;
+            user-select: none;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 10px;
         }
-
-        .blog-card:hover {
-            border-color: rgba(100, 255, 218, 0.3);
-            transform: translateY(-5px);
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #00bcd4, #64ffda);
+            box-shadow: 0 12px 20px rgba(100, 255, 218, 0.5);
+            transform: translateY(-3px);
         }
-
-        .blog-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-            z-index: 9999;
+        /* منوی زبان */
+        #lang-btn {
+            background: none;
+            border: none;
+            color: #64ffda;
+            cursor: pointer;
+            font-weight: 600;
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .blog-modal-content {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            border-radius: 1rem;
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            max-width: 4xl;
-            max-height: 90vh;
-            overflow-y: auto;
+            gap: 5px;
+            font-size: 1rem;
             position: relative;
         }
-
-        .blog-content {
-            line-height: 1.8;
+        #lang-dropdown {
+            position: absolute;
+            background: #1e293b;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            margin-top: 5px;
+            right: 0;
+            display: none;
+            min-width: 120px;
+            z-index: 1000;
         }
-
-        .blog-content h1, .blog-content h2, .blog-content h3 {
+        #lang-dropdown button {
+            background: none;
+            border: none;
+            color: #cbd5e1;
+            width: 100%;
+            padding: 8px 12px;
+            text-align: right;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        #lang-dropdown button:hover {
+            background: #0f172a;
             color: #64ffda;
-            margin: 1.5rem 0 1rem 0;
         }
-
-        .blog-content p {
-            margin-bottom: 1rem;
-            color: #e2e8f0;
+        /* ناوبری */
+        nav {
+            background: #0f172a;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 2000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.7);
         }
-
-        .blog-content ul, .blog-content ol {
-            margin: 1rem 0;
-            padding-right: 2rem;
+        nav .logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            background: linear-gradient(90deg, #64ffda, #00bcd4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        .blog-content li {
-            margin-bottom: 0.5rem;
+        nav .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        nav .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+        nav .nav-links a:hover {
+            color: #64ffda;
+        }
+        /* پروژه‌ها */
+        #projects {
+            padding: 80px 20px 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        #projects h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #64ffda, #00bcd4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .project-card {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(100,255,218,0.2);
+            transition: box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            box-shadow: 0 8px 24px rgba(100,255,218,0.5);
+        }
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #64ffda;
+        }
+        .btn-show-project {
+            background: #0891b2;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: background 0.3s ease;
+        }
+        .btn-show-project:hover {
+            background: #00bcd4;
+        }
+        /* مدال پروژه */
+        #project-modal {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            padding: 20px;
+        }
+        #project-modal .modal-content {
+            background: #0f172a;
+            border-radius: 12px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 20px;
+            position: relative;
             color: #cbd5e1;
         }
-
-        .blog-content code {
-            background: rgba(51, 65, 85, 0.8);
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
-            font-family: 'Courier New', monospace;
+        #project-modal .close-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
             color: #64ffda;
+            cursor: pointer;
         }
-
-        .blog-content pre {
-            background: rgba(15, 23, 42, 0.8);
-            padding: 1rem;
-            border-radius: 0.5rem;
-            overflow-x: auto;
-            margin: 1rem 0;
-            border: 1px solid rgba(100, 255, 218, 0.1);
+        /* فرم تماس */
+        #contact {
+            padding: 60px 20px;
+            max-width: 600px;
+            margin: 0 auto 60px auto;
         }
-
-        .blog-tags {
+        #contact h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #64ffda, #00bcd4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        #contact form {
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
+            flex-direction: column;
+            gap: 15px;
         }
-
-        .blog-tag {
-            background: rgba(100, 255, 218, 0.1);
-            color: #64ffda;
-            padding: 0.25rem 0.75rem;
-            border-radius: 1rem;
-            font-size: 0.875rem;
-            border: 1px solid rgba(100, 255, 218, 0.2);
+        #contact input, #contact textarea {
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            font-family: inherit;
         }
-
-        /* Social Links */
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 3rem;
-            height: 3rem;
-            background: rgba(100, 255, 218, 0.1);
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            border-radius: 50%;
-            color: #64ffda;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1.25rem;
-        }
-
-        .social-link:hover {
-            background: rgba(100, 255, 218, 0.2);
-            border-color: #64ffda;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
-        }
-
-        /* Admin Panel Styles */
-        .admin-hidden {
-            display: none !important;
-        }
-
-        .admin-sidebar {
-            transition: transform 0.3s ease;
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-        }
-
-        .admin-content {
-            transition: margin 0.3s ease;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        }
-
-        .admin-tab {
-            transition: all 0.3s ease;
-            border-radius: 0.5rem;
-        }
-
-        .admin-tab.active {
-            background: rgba(100, 255, 218, 0.1);
-            border-color: #64ffda;
-            color: #64ffda;
-        }
-
-        .admin-tab:hover {
-            background: rgba(100, 255, 218, 0.05);
-            color: #64ffda;
-        }
-
-        .admin-input {
-            background: rgba(30, 41, 59, 0.8);
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            color: #e2e8f0;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            width: 100%;
-            transition: all 0.3s ease;
-        }
-
-        .admin-input:focus {
-            outline: none;
-            border-color: #64ffda;
-            box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.1);
-        }
-
-        .admin-textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .admin-button {
-            background: linear-gradient(135deg, #64ffda 0%, #00bcd4 100%);
+        #contact button {
+            background: #64ffda;
             color: #0f172a;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            font-weight: 700;
+            padding: 12px;
             border: none;
+            border-radius: 8px;
             cursor: pointer;
+            transition: background 0.3s ease;
         }
-
-        .admin-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(100, 255, 218, 0.3);
-        }
-
-        .admin-button.secondary {
-            background: rgba(100, 255, 218, 0.1);
-            color: #64ffda;
-            border: 1px solid rgba(100, 255, 218, 0.3);
-        }
-
-        .admin-button.danger {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            color: white;
-        }
-
-        .admin-card {
-            background: rgba(30, 41, 59, 0.8);
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .admin-section-title {
-            color: #64ffda;
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid rgba(100, 255, 218, 0.2);
-        }
-
-        .admin-notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 1rem 1.5rem;
-            border-radius: 0.5rem;
-            color: white;
-            font-weight: 500;
-            z-index: 1000;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .admin-notification.show {
-            transform: translateX(0);
-        }
-
-        .admin-notification.success {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        }
-
-        .admin-notification.error {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-        }
-
-        .admin-login-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.9);
-            backdrop-filter: blur(10px);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .admin-login-form {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            padding: 2rem;
-            border-radius: 1rem;
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            min-width: 400px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-        }
-
-        .admin-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #64ffda 0%, #00bcd4 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(100, 255, 218, 0.3);
-        }
-
-        .admin-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(100, 255, 218, 0.4);
-        }
-
-        .admin-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-            z-index: 999;
-        }
-
-        .skill-item {
-            background: rgba(51, 65, 85, 0.5);
-            border-radius: 0.5rem;
-            padding: 1rem;
-            margin-bottom: 0.5rem;
-            border: 1px solid rgba(100, 255, 218, 0.1);
-        }
-
-        .project-item {
-            background: rgba(51, 65, 85, 0.5);
-            border-radius: 0.5rem;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(100, 255, 218, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .delete-btn {
-            background: #ef4444;
-            color: white;
-            border: none;
-            padding: 0.5rem;
-            border-radius: 0.25rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .delete-btn:hover {
-            background: #dc2626;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .mobile-menu.open {
-            transform: translateX(0);
-        }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Animations */
-        .fade-in {
-            animation: fadeIn 1s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .slide-in-left {
-            animation: slideInLeft 0.8s ease-out;
-        }
-
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .slide-in-right {
-            animation: slideInRight 0.8s ease-out;
-        }
-
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        /* Blog Filter */
-        .blog-filter {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-
-        .filter-btn {
-            padding: 0.5rem 1rem;
-            background: rgba(100, 255, 218, 0.1);
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            border-radius: 2rem;
-            color: #64ffda;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .filter-btn.active {
-            background: rgba(100, 255, 218, 0.2);
-            border-color: #64ffda;
-        }
-
-        .filter-btn:hover {
-            background: rgba(100, 255, 218, 0.15);
-        }
-
-        /* Rich Text Editor */
-        .rich-editor {
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            border-radius: 0.5rem;
-            overflow: hidden;
-        }
-
-        .editor-toolbar {
-            background: rgba(51, 65, 85, 0.8);
-            padding: 0.5rem;
-            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .editor-btn {
-            padding: 0.25rem 0.5rem;
-            background: rgba(100, 255, 218, 0.1);
-            border: 1px solid rgba(100, 255, 218, 0.2);
-            border-radius: 0.25rem;
-            color: #64ffda;
-            cursor: pointer;
-            font-size: 0.875rem;
-            transition: all 0.3s ease;
-        }
-
-        .editor-btn:hover {
-            background: rgba(100, 255, 218, 0.2);
-        }
-
-        .editor-content {
-            min-height: 300px;
-            padding: 1rem;
-            background: rgba(30, 41, 59, 0.8);
-            color: #e2e8f0;
-            outline: none;
-            overflow-y: auto;
+        #contact button:hover {
+            background: #00bcd4;
         }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-300 font-persian">
-    <!-- Navigation -->
-    <nav class="navbar fixed top-0 left-0 right-0 z-50">
-        <div class="container mx-auto px-6">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <span class="text-xl font-bold text-gradient">MYTechHubPro24</span>
-                </div>
+<body>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8 space-x-reverse">
-                    <a href="#home" class="nav-link active">خانه</a>
-                    <a href="#about" class="nav-link">درباره من</a>
-                    <a href="#services" class="nav-link">خدمات</a>
-                    <a href="#skills" class="nav-link">مهارت‌ها</a>
-                    <a href="#projects" class="nav-link">پروژه‌ها</a>
-                    <a href="#blog" class="nav-link">وبلاگ</a>
-                    <a href="#contact" class="nav-link">تماس</a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-teal-400">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="mobile-menu md:hidden fixed top-16 left-0 right-0 bg-slate-800 border-t border-slate-700">
-            <div class="px-6 py-4 space-y-2">
-                <a href="#home" class="block nav-link">خانه</a>
-                <a href="#about" class="block nav-link">درباره من</a>
-                <a href="#services" class="block nav-link">خدمات</a>
-                <a href="#skills" class="block nav-link">مهارت‌ها</a>
-                <a href="#projects" class="block nav-link">پروژه‌ها</a>
-                <a href="#blog" class="block nav-link">وبلاگ</a>
-                <a href="#contact" class="block nav-link">تماس</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Admin Login Overlay -->
-    <div id="admin-login-overlay" class="admin-login-overlay admin-hidden">
-        <div class="admin-login-form">
-            <h2 class="text-2xl font-bold text-center text-gradient mb-6">ورود به پنل مدیریت</h2>
-            <form id="admin-login-form">
-                <div class="form-group">
-                    <label class="block text-sm font-medium text-slate-300 mb-2">نام کاربری</label>
-                    <input type="text" id="admin-username" class="admin-input" required>
-                </div>
-                <div class="form-group">
-                    <label class="block text-sm font-medium text-slate-300 mb-2">رمز عبور</label>
-                    <input type="password" id="admin-password" class="admin-input" required>
-                </div>
-                <div class="form-group">
-                    <label class="block text-sm font-medium text-slate-300 mb-2">کد امنیتی</label>
-                    <div class="flex gap-2 items-center">
-                        <input type="text" id="admin-captcha" class="admin-input" required>
-                        <div id="captcha-display" class="bg-slate-700 px-4 py-2 rounded font-mono text-lg text-teal-400 border border-slate-600 min-w-[100px] text-center"></div>
-                        <button type="button" id="refresh-captcha" class="admin-button secondary px-3 py-2">
-                            ↻
-                        </button>
-                    </div>
-                </div>
-                <button type="submit" class="admin-button w-full">ورود</button>
-                <div id="login-error" class="text-red-400 text-sm mt-2 text-center admin-hidden"></div>
-            </form>
+<nav>
+    <div class="logo">MYTechHubPro24</div>
+    <div class="nav-links">
+        <a href="#home">خانه</a>
+        <a href="#projects">پروژه‌ها</a>
+        <a href="#contact">تماس</a>
+        <button id="lang-btn" aria-haspopup="true" aria-expanded="false" aria-controls="lang-dropdown">
+            زبان: <span id="current-lang">فا</span> ▼
+        </button>
+        <div id="lang-dropdown" role="menu" aria-label="انتخاب زبان">
+            <button data-lang="fa" role="menuitem">فارسی</button>
+            <button data-lang="en" role="menuitem">English</button>
+            <button data-lang="de" role="menuitem">Deutsch</button>
         </div>
     </div>
+</nav>
 
-    <!-- Admin Panel -->
-    <div id="admin-panel" class="admin-hidden">
-        <!-- Admin Overlay -->
-        <div class="admin-overlay"></div>
-        
-        <!-- Admin Sidebar -->
-        <div class="admin-sidebar fixed left-0 top-0 h-full w-80 border-r border-slate-700 z-1000 overflow-y-auto">
-            <div class="p-6">
-                <div class="flex items-center justify-between mb-8">
-                    <h1 class="text-xl font-bold text-gradient">پنل مدیریت</h1>
-                    <button id="close-admin" class="text-slate-400 hover:text-white">
-                        ✕
-                    </button>
-                </div>
-                
-                <!-- Admin Navigation -->
-                <nav class="space-y-2">
-                    <button class="admin-tab w-full text-right px-4 py-3 border border-transparent active" data-tab="general">
-                        ⚙️ تنظیمات کلی
-                    </button>
-                    <button class="admin-tab w-full text-right px-4 py-3 border border-transparent" data-tab="blog">
-                        📝 وبلاگ
-                    </button>
-                    <button class="admin-tab w-full text-right px-4 py-3 border border-transparent" data-tab="skills">
-                        💡 مهارت‌ها
-                    </button>
-                    <button class="admin-tab w-full text-right px-4 py-3 border border-transparent" data-tab="projects">
-                        📁 پروژه‌ها
-                    </button>
-                    <button class="admin-tab w-full text-right px-4 py-3 border border-transparent" data-tab="services">
-                        🛠️ خدمات
-                    </button>
-                    <button class="admin-tab w-full text-right px-4 py-3 border border-transparent" data-tab="security">
-                        🔒 امنیت
-                    </button>
-                </nav>
-                
-                <!-- Save All Button -->
-                <div class="mt-8 pt-6 border-t border-slate-700">
-                    <button id="save-all-changes" class="admin-button w-full">
-                        💾 ذخیره همه تغییرات
-                    </button>
-                    <button id="reset-all-changes" class="admin-button danger w-full mt-2">
-                        🔄 بازنشانی همه
-                    </button>
-                    <button id="export-data" class="admin-button secondary w-full mt-2">
-                        📤 خروجی داده‌ها
-                    </button>
-                    <button id="import-data" class="admin-button secondary w-full mt-2">
-                        📥 وارد کردن داده‌ها
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Admin Content -->
-        <div class="admin-content ml-80 p-6 min-h-screen">
-            <!-- General Settings Tab -->
-            <div id="admin-general" class="admin-tab-content">
-                <h2 class="text-2xl font-bold text-gradient mb-6">تنظیمات کلی</h2>
-                
-                <div class="admin-card">
-                    <h3 class="admin-section-title">اطلاعات پایه</h3>
-                    
-                    <div class="form-group">
-                        <label class="block text-sm font-medium text-slate-300 mb-2">نام کامل</label>
-                        <input type="text" class="admin-input" data-field="hero-name" value="مصطفی حیدری">
-                    </div>
-                    <div class="form-group">
-                        <label class="block text-sm font-medium text-slate-300 mb-2">عنوان شغلی</label>
-                        <input type="text" class="admin-input" data-field="hero-title" value="متخصص شبکه و زیرساخت IT">
-                    </div>
-                    <div class="form-group">
-                        <label class="block text-sm font-medium text-slate-300 mb-2">توضیحات</label>
-                        <textarea class="admin-input admin-textarea" data-field="hero-description">طراحی، پیاده‌سازی و مدیریت زیرساخت‌های شبکه پیشرفته برای سازمان‌های بزرگ</textarea>
-                    </div>
-                </div>
-                
-                <div class="admin-card">
-                    <h3 class="admin-section-title">اطلاعات تماس</h3>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="block text-sm font-medium text-slate-300 mb-2">ایمیل</label>
-                            <input type="email" class="admin-input" data-field="contact-email" value="mostafa.heydari@email.com">
-                        </div>
-                        <div class="form-group">
-                            <label class="block text-sm font-medium text-slate-300 mb-2">تلفن</label>
-                            <input type="text" class="admin-input" data-field="contact-phone" value="۰۹۱۲۳۴۵۶۷۸۹">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="block text-sm font-medium text-slate-300 mb-2">آدرس</label>
-                        <input type="text" class="admin-input" data-field="contact-location" value="تهران، ایران">
-                    </div>
-                    
-                    <h4 class="text-lg font-semibold text-teal-400 mt-6 mb-4">لینک‌های اجتماعی</h4>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="block text-sm font-medium text-slate-300 mb-2">LinkedIn</label>
-                            <input type="url" class="admin-input" data-field="social-linkedin" value="https://linkedin.com/in/mostafa-heydari">
-                        </div>
-                        <div class="form-group">
-                            <label class="block text-sm font-medium text-slate-300 mb-2">GitHub</label>
-                            <input type="url" class="admin-input" data-field="social-github" value="https://github.com/mostafa-heydari">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="block text-sm font-medium text-slate-300 mb-2">Twitter</label>
-                            <input type="url" class="admin-input" data-field="social-twitter" value="https://twitter.com/mostafa_heydari">
-                        </div>
-                        <div class="form-group">
-                            <label class="block text-sm font-medium text-slate-300 mb-2">Instagram</label>
-                            <input type="url" class="admin-input" data-field="social-instagram" value="https://instagram.com/mostafa.heydari">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label class="block text-sm font-medium text-slate-300 mb-2">Telegram</label>
-                            <input type="url" class="admin-input" data-field="social-telegram" value="https://t.me/mostafa_heydari">
-                        </div>
-                        <div class="form-group">
-                            <label class="block text-sm font-medium text-slate-300 mb-2">YouTube</label>
-                            <input type="url" class="admin-input" data-field="social-youtube" value="https://youtube.com/@mostafa-heydari">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Blog Tab -->
-            <div id="admin-blog" class="admin-tab-content admin-hidden">
-                <h2 class="text-2xl font-bold text-gradient mb-6">مدیریت وبلاگ</h2>
-                
-                <div class="admin-card">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="admin-section-title">مقالات</h3>
-                        <button id="add-article" class="admin-button secondary">
-                            ➕ افزودن مقاله
-                        </button>
-                    </div>
-                    
-                    <div id="articles-list">
-                        <!-- Articles will be populated by JavaScript -->
-                    </div>
-                </div>
-                
-                <!-- Article Editor Modal -->
-                <div id="article-editor-modal" class="admin-hidden blog-modal">
-                    <div class="blog-modal-content w-full max-w-6xl p-6">
-                        <div class="flex justify-between items-center mb-6">
-                            <h3 class="text-2xl font-bold text-gradient">ویرایش مقاله</h3>
-                            <button id="close-article-editor" class="text-slate-400 hover:text-white text-2xl">✕</button>
-                        </div>
-                        
-                        <form id="article-form">
-                            <div class="grid md:grid-cols-2 gap-6 mb-6">
-                                <div class="form-group">
-                                    <label class="block text-sm font-medium text-slate-300 mb-2">عنوان مقاله</label>
-                                    <input type="text" id="article-title" class="admin-input" required>
-                                </div>
-                                <div class="form-group">
-                                    <label class="block text-sm font-medium text-slate-300 mb-2">دسته‌بندی</label>
-                                    <select id="article-category" class="admin-input" required>
-                                        <option value="network">شبکه</option>
-                                        <option value="security">امنیت</option>
-                                        <option value="virtualization">مجازی‌سازی</option>
-                                        <option value="cloud">کلود</option>
-                                        <option value="tutorial">آموزش</option>
-                                        <option value="news">اخبار</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group mb-6">
-                                <label class="block text-sm font-medium text-slate-300 mb-2">خلاصه مقاله</label>
-                                <textarea id="article-excerpt" class="admin-input admin-textarea" rows="3" required></textarea>
-                            </div>
-                            
-                            <div class="form-group mb-6">
-                                <label class="block text-sm font-medium text-slate-300 mb-2">تگ‌ها (با کاما جدا کنید)</label>
-                                <input type="text" id="article-tags" class="admin-input" placeholder="شبکه, امنیت, آموزش">
-                            </div>
-                            
-                            <div class="form-group mb-6">
-                                <label class="block text-sm font-medium text-slate-300 mb-2">محتوای مقاله</label>
-                                <div class="rich-editor">
-                                    <div class="editor-toolbar">
-                                        <button type="button" class="editor-btn" data-command="bold">B</button>
-                                        <button type="button" class="editor-btn" data-command="italic">I</button>
-                                        <button type="button" class="editor-btn" data-command="underline">U</button>
-                                        <button type="button" class="editor-btn" data-command="insertOrderedList">1.</button>
-                                        <button type="button" class="editor-btn" data-command="insertUnorderedList">•</button>
-                                        <button type="button" class="editor-btn" data-command="createLink">🔗</button>
-                                        <button type="button" class="editor-btn" data-command="formatBlock" data-value="h2">H2</button>
-                                        <button type="button" class="editor-btn" data-command="formatBlock" data-value="h3">H3</button>
-                                        <button type="button" class="editor-btn" data-command="formatBlock" data-value="p">P</button>
-                                    </div>
-                                    <div id="article-content" class="editor-content" contenteditable="true"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="flex gap-4">
-                                <button type="submit" class="admin-button">💾 ذخیره مقاله</button>
-                                <button type="button" id="cancel-article-edit" class="admin-button secondary">❌ لغو</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Skills Tab -->
-            <div id="admin-skills" class="admin-tab-content admin-hidden">
-                <h2 class="text-2xl font-bold text-gradient mb-6">مدیریت مهارت‌ها</h2>
-                
-                <div class="admin-card">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="admin-section-title">مهارت‌های فنی</h3>
-                        <button id="add-skill" class="admin-button secondary">
-                            ➕ افزودن مهارت
-                        </button>
-                    </div>
-                    
-                    <div id="skills-list">
-                        <!-- Skills will be populated by JavaScript -->
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Projects Tab -->
-            <div id="admin-projects" class="admin-tab-content admin-hidden">
-                <h2 class="text-2xl font-bold text-gradient mb-6">مدیریت پروژه‌ها</h2>
-                
-                <div class="admin-card">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="admin-section-title">پروژه‌ها</h3>
-                        <button id="add-project" class="admin-button secondary">
-                            ➕ افزودن پروژه
-                        </button>
-                    </div>
-                    
-                    <div id="projects-list">
-                        <!-- Projects will be populated by JavaScript -->
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Services Tab -->
-            <div id="admin-services" class="admin-tab-content admin-hidden">
-                <h2 class="text-2xl font-bold text-gradient mb-6">مدیریت خدمات</h2>
-                
-                <div class="admin-card">
-                    <h3 class="admin-section-title">خدمات ارائه شده</h3>
-                    
-                    <div id="services-list">
-                        <!-- Services will be populated by JavaScript -->
-                    </div>
-                    
-                    <button id="add-service" class="admin-button secondary mt-4">
-                        ➕ افزودن خدمت
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Security Tab -->
-            <div id="admin-security" class="admin-tab-content admin-hidden">
-                <h2 class="text-2xl font-bold text-gradient mb-6">تنظیمات امنیتی</h2>
-                
-                <div class="admin-card">
-                    <h3 class="admin-section-title">تغییر رمز عبور</h3>
-                    <form id="change-password-form">
-                        <div class="form-group">
-                            <label class="block text-sm font-medium text-slate-300 mb-2">رمز عبور فعلی</label>
-                            <input type="password" id="current-password" class="admin-input" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="block text-sm font-medium text-slate-300 mb-2">رمز عبور جدید</label>
-                            <input type="password" id="new-password" class="admin-input" required minlength="6">
-                        </div>
-                        <div class="form-group">
-                            <label class="block text-sm font-medium text-slate-300 mb-2">تکرار رمز عبور جدید</label>
-                            <input type="password" id="confirm-password" class="admin-input" required>
-                        </div>
-                        <button type="submit" class="admin-button">
-                            🔒 تغییر رمز عبور
-                        </button>
-                    </form>
-                </div>
-                
-                <div class="admin-card">
-                    <h3 class="admin-section-title">تنظیمات جلسه</h3>
-                    <div class="form-group">
-                        <label class="block text-sm font-medium text-slate-300 mb-2">مدت زمان جلسه (دقیقه)</label>
-                        <input type="number" id="session-timeout" class="admin-input" value="30" min="5" max="120">
-                    </div>
-                    <button id="save-session-settings" class="admin-button secondary">
-                        💾 ذخیره تنظیمات
-                    </button>
-                </div>
-                
-                <div class="admin-card">
-                    <h3 class="admin-section-title">گزارش فعالیت</h3>
-                    <div id="activity-log" class="space-y-2">
-                        <!-- Activity log will be populated by JavaScript -->
-                    </div>
-                    <button id="clear-activity-log" class="admin-button danger mt-4">
-                        🗑️ پاک کردن گزارش
-                    </button>
-                </div>
-            </div>
-        </div>
+<section id="home">
+    <div class="content">
+        <h1>مصطفی حیدری</h1>
+        <h2>متخصص شبکه و زیرساخت IT</h2>
+        <p>طراحی، پیاده‌سازی و مدیریت زیرساخت‌های شبکه پیشرفته برای سازمان‌های بزرگ</p>
+        <a href="#projects" class="btn-primary">مشاهده پروژه‌ها</a>
+        <a href="resume.pdf" download class="btn-primary" style="background: transparent; color: #64ffda; border: 2px solid #64ffda;">دانلود رزومه (PDF)</a>
     </div>
+</section>
 
-    <!-- Admin Toggle Button -->
-    <div id="admin-toggle" class="admin-toggle">
-        ⚙️
+<section id="projects">
+    <h2>پروژه‌ها</h2>
+    <div class="project-card">
+        <div class="project-title">پروژه نمونه ۱</div>
+        <button class="btn-show-project" data-project="1">نمایش</button>
     </div>
-
-    <!-- Notification -->
-    <div id="admin-notification" class="admin-notification">
-        <span id="notification-text"></span>
+    <div class="project-card">
+        <div class="project-title">پروژه نمونه ۲</div>
+        <button class="btn-show-project" data-project="2">نمایش</button>
     </div>
+</section>
 
-    <!-- Blog Article Modal -->
-    <div id="blog-modal" class="blog-modal admin-hidden">
-        <div class="blog-modal-content w-full max-w-4xl p-8">
-            <div class="flex justify-between items-center mb-6">
-                <div>
-                    <h1 id="modal-article-title" class="text-3xl font-bold text-gradient mb-2"></h1>
-                    <div class="flex items-center gap-4 text-sm text-slate-400">
-                        <span id="modal-article-date"></span>
-                        <span id="modal-article-category" class="bg-teal-500 text-slate-900 px-2 py-1 rounded"></span>
-                        <span id="modal-article-read-time"></span>
-                    </div>
-                </div>
-                <button id="close-blog-modal" class="text-slate-400 hover:text-white text-2xl">✕</button>
-            </div>
-            
-            <div id="modal-article-content" class="blog-content">
-                <!-- Article content will be populated by JavaScript -->
-            </div>
-            
-            <div id="modal-article-tags" class="blog-tags mt-8">
-                <!-- Tags will be populated by JavaScript -->
-            </div>
-        </div>
+<section id="contact">
+    <h2>تماس با من</h2>
+    <form id="contact-form">
+        <input type="text" name="name" placeholder="نام شما" required />
+        <input type="email" name="email" placeholder="ایمیل شما" required />
+        <textarea name="message" rows="5" placeholder="پیام شما" required></textarea>
+        <button type="submit">ارسال پیام</button>
+    </form>
+</section>
+
+<!-- مدال پروژه -->
+<div id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" style="display:none; justify-content:center; align-items:center; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.8); z-index:3000; padding:20px;">
+    <div class="modal-content" style="background:#0f172a; border-radius:12px; max-width:700px; width:100%; max-height:90vh; overflow-y:auto; padding:20px; position:relative; color:#cbd5e1;">
+        <button class="close-btn" aria-label="بستن مدال" style="position:absolute; top:10px; left:10px; background:transparent; border:none; font-size:1.5rem; color:#64ffda; cursor:pointer;">&times;</button>
+        <h3 id="modal-title"></h3>
+        <div id="modal-body"></div>
     </div>
+</div>
 
-    <!-- Main Website Content -->
-    <div id="main-website">
-        <!-- Hero Section -->
-        <section id="home" class="section min-h-screen relative flex items-center justify-center pt-16 overflow-hidden gradient-bg">
-            <div class="container mx-auto px-6 text-center relative z-20">
-                <div class="fade-in">
-                    <!-- Brand Logo -->
-                    <div class="mb-12">
-                        <h1 class="text-4xl md:text-6xl font-bold tracking-wider mb-4">
-                            <span class="brand-logo-main">MYTechHubPro24</span>
-                        </h1>
-                        <div class="w-24 h-1 bg-gradient-to-r from-teal-400 to-cyan-500 mx-auto rounded-full"></div>
-                    </div>
+<script>
+    // منوی زبان
+    const langBtn = document.getElementById('lang-btn');
+    const langDropdown = document.getElementById('lang-dropdown');
+    const currentLang = document.getElementById('current-lang');
 
-                    <h2 class="text-5xl md:text-7xl font-bold mb-6">
-                        <span class="text-gradient" id="hero-name">مصطفی حیدری</span>
-                    </h2>
-                    <h3 class="text-2xl md:text-3xl text-white mb-8 shadow-lg" id="hero-title">
-                        متخصص شبکه و زیرساخت IT
-                    </h3>
-                    <p class="text-lg text-slate-200 mb-12 max-w-2xl mx-auto leading-relaxed shadow-sm" id="hero-description">
-                        طراحی، پیاده‌سازی و مدیریت زیرساخت‌های شبکه پیشرفته برای سازمان‌های بزرگ
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="#projects" class="bg-teal-500 hover:bg-teal-600 text-slate-900 px-8 py-3 rounded-lg font-semibold transition-colors shadow-lg hover:shadow-xl">
-                            مشاهده پروژه‌ها
-                        </a>
-                        <a href="#contact" class="border border-teal-500 text-teal-400 hover:bg-teal-500 hover:text-slate-900 px-8 py-3 rounded-lg font-semibold transition-colors shadow-lg hover:shadow-xl">
-                            تماس با من
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+    langBtn.addEventListener('click', () => {
+        const expanded = langBtn.getAttribute('aria-expanded') === 'true';
+        langBtn.setAttribute('aria-expanded', !expanded);
+        langDropdown.style.display = expanded ? 'none' : 'block';
+    });
 
-        <!-- About Section -->
-        <section id="about" class="section bg-slate-800">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gradient mb-4">درباره من</h2>
-                    <div class="w-20 h-1 bg-teal-500 mx-auto rounded-full"></div>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="slide-in-left">
-                        <div class="card">
-                            <h3 class="text-2xl font-bold text-teal-400 mb-4">تجربه و تخصص</h3>
-                            <p class="text-slate-300 leading-relaxed mb-6">
-                                با بیش از ۱۰ سال تجربه در حوزه شبکه و زیرساخت IT، متخصص طراحی و پیاده‌سازی راه‌حل‌های شبکه‌ای مقیاس‌پذیر و امن برای سازمان‌های مختلف هستم.
-                            </p>
-                            <div class="space-y-3">
-                                <div class="flex items-center">
-                                    <span class="text-teal-400 ml-3">✓</span>
-                                    <span>طراحی شبکه‌های سازمانی پیچیده</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <span class="text-teal-400 ml-3">✓</span>
-                                    <span>پیاده‌سازی راه‌حل‌های امنیتی</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <span class="text-teal-400 ml-3">✓</span>
-                                    <span>مدیریت مراکز داده</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <span class="text-teal-400 ml-3">✓</span>
-                                    <span>مجازی‌سازی و Cloud Computing</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="slide-in-right">
-                        <div class="card">
-                            <h3 class="text-2xl font-bold text-teal-400 mb-4">مدارک و گواهینامه‌ها</h3>
-                            <div class="space-y-4">
-                                <div class="bg-slate-700 p-4 rounded-lg">
-                                    <h4 class="font-semibold text-white">CCNP Enterprise</h4>
-                                    <p class="text-slate-400 text-sm">Cisco Certified Network Professional</p>
-                                </div>
-                                <div class="bg-slate-700 p-4 rounded-lg">
-                                    <h4 class="font-semibold text-white">VCP-DCV</h4>
-                                    <p class="text-slate-400 text-sm">VMware Certified Professional</p>
-                                </div>
-                                <div class="bg-slate-700 p-4 rounded-lg">
-                                    <h4 class="font-semibold text-white">CISSP</h4>
-                                    <p class="text-slate-400 text-sm">Certified Information Systems Security Professional</p>
-                                </div>
-                                <div class="bg-slate-700 p-4 rounded-lg">
-                                    <h4 class="font-semibold text-white">AWS Solutions Architect</h4>
-                                    <p class="text-slate-400 text-sm">Amazon Web Services Certified</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section -->
-        <section id="services" class="section bg-slate-900">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gradient mb-4">خدمات</h2>
-                    <div class="w-20 h-1 bg-teal-500 mx-auto rounded-full"></div>
-                    <p class="text-slate-400 mt-6 max-w-2xl mx-auto">
-                        ارائه خدمات تخصصی در حوزه شبکه و زیرساخت IT با استفاده از جدیدترین تکنولوژی‌ها
-                    </p>
-                </div>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="services-container">
-                    <div class="card fade-in">
-                        <div class="text-center mb-6">
-                            <div class="w-16 h-16 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <span class="text-2xl">🌐</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white">طراحی شبکه</h3>
-                        </div>
-                        <p class="text-slate-400 text-center leading-relaxed">
-                            طراحی و پیاده‌سازی شبکه‌های مقیاس‌پذیر و امن برای سازمان‌های مختلف با در نظر گیری نیازهای آینده
-                        </p>
-                    </div>
-                    
-                    <div class="card fade-in">
-                        <div class="text-center mb-6">
-                            <div class="w-16 h-16 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <span class="text-2xl">🔒</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white">امنیت شبکه</h3>
-                        </div>
-                        <p class="text-slate-400 text-center leading-relaxed">
-                            پیاده‌سازی راه‌حل‌های امنیتی پیشرفته شامل Firewall، IPS/IDS، VPN و سیستم‌های تشخیص نفوذ
-                        </p>
-                    </div>
-                    
-                    <div class="card fade-in">
-                        <div class="text-center mb-6">
-                            <div class="w-16 h-16 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <span class="text-2xl">☁️</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white">مجازی‌سازی</h3>
-                        </div>
-                        <p class="text-slate-400 text-center leading-relaxed">
-                            راه‌اندازی و مدیریت محیط‌های مجازی با VMware vSphere، Hyper-V و راه‌حل‌های Cloud
-                        </p>
-                    </div>
-                    
-                    <div class="card fade-in">
-                        <div class="text-center mb-6">
-                            <div class="w-16 h-16 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <span class="text-2xl">🏢</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white">مرکز داده</h3>
-                        </div>
-                        <p class="text-slate-400 text-center leading-relaxed">
-                            طراحی، راه‌اندازی و مدیریت مراکز داده با تمرکز بر High Availability و Disaster Recovery
-                        </p>
-                    </div>
-                    
-                    <div class="card fade-in">
-                        <div class="text-center mb-6">
-                            <div class="w-16 h-16 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <span class="text-2xl">📊</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white">مانیتورینگ</h3>
-                        </div>
-                        <p class="text-slate-400 text-center leading-relaxed">
-                            پیاده‌سازی سیستم‌های نظارت و مانیتورینگ شبکه برای تشخیص زودهنگام مشکلات و بهینه‌سازی عملکرد
-                        </p>
-                    </div>
-                    
-                    <div class="card fade-in">
-                        <div class="text-center mb-6">
-                            <div class="w-16 h-16 bg-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <span class="text-2xl">🎓</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white">مشاوره و آموزش</h3>
-                        </div>
-                        <p class="text-slate-400 text-center leading-relaxed">
-                            ارائه مشاوره تخصصی و آموزش تیم‌های فنی در زمینه شبکه، امنیت و تکنولوژی‌های نوین
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="section bg-slate-800">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gradient mb-4">مهارت‌ها</h2>
-                    <div class="w-20 h-1 bg-teal-500 mx-auto rounded-full"></div>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div class="slide-in-left">
-                        <h3 class="text-2xl font-bold text-teal-400 mb-8">مهارت‌های فنی</h3>
-                        <div class="space-y-6" id="skills-container">
-                            <div class="skill-item">
-                                <div class="flex justify-between items-center mb-2">
-                                    <span class="text-white font-medium">Cisco Networking</span>
-                                    <span class="text-teal-400 font-bold">95%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 95%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="flex justify-between items-center mb-2">
-                                    <span class="text-white font-medium">VMware vSphere</span>
-                                    <span class="text-teal-400 font-bold">90%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 90%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="flex justify-between items-center mb-2">
-                                    <span class="text-white font-medium">Network Security</span>
-                                    <span class="text-teal-400 font-bold">92%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 92%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="flex justify-between items-center mb-2">
-                                    <span class="text-white font-medium">AWS Cloud</span>
-                                    <span class="text-teal-400 font-bold">85%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 85%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="skill-item">
-                                <div class="flex justify-between items-center mb-2">
-                                    <span class="text-white font-medium">Linux Administration</span>
-                                    <span class="text-teal-400 font-bold">88%</span>
-                                </div>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 88%"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="slide-in-right">
-                        <h3 class="text-2xl font-bold text-teal-400 mb-8">تکنولوژی‌ها و ابزارها</h3>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-slate-700 p-4 rounded-lg text-center">
-                                <h4 class="font-semibold text-white mb-2">شبکه</h4>
-                                <p class="text-sm text-slate-400">Cisco, Juniper, HP, Mikrotik</p>
-                            </div>
-                            <div class="bg-slate-700 p-4 rounded-lg text-center">
-                                <h4 class="font-semibold text-white mb-2">امنیت</h4>
-                                <p class="text-sm text-slate-400">Fortinet, Palo Alto, Check Point</p>
-                            </div>
-                            <div class="bg-slate-700 p-4 rounded-lg text-center">
-                                <h4 class="font-semibold text-white mb-2">مجازی‌سازی</h4>
-                                <p class="text-sm text-slate-400">VMware, Hyper-V, KVM</p>
-                            </div>
-                            <div class="bg-slate-700 p-4 rounded-lg text-center">
-                                <h4 class="font-semibold text-white mb-2">Cloud</h4>
-                                <p class="text-sm text-slate-400">AWS, Azure, Google Cloud</p>
-                            </div>
-                            <div class="bg-slate-700 p-4 rounded-lg text-center">
-                                <h4 class="font-semibold text-white mb-2">مانیتورینگ</h4>
-                                <p class="text-sm text-slate-400">Zabbix, PRTG, SolarWinds</p>
-                            </div>
-                            <div class="bg-slate-700 p-4 rounded-lg text-center">
-                                <h4 class="font-semibold text-white mb-2">سیستم عامل</h4>
-                                <p class="text-sm text-slate-400">Linux, Windows Server</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="section bg-slate-900">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gradient mb-4">پروژه‌ها</h2>
-                    <div class="w-20 h-1 bg-teal-500 mx-auto rounded-full"></div>
-                    <p class="text-slate-400 mt-6 max-w-2xl mx-auto">
-                        نمونه‌ای از پروژه‌های موفق انجام شده در حوزه شبکه و زیرساخت IT
-                    </p>
-                </div>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-container">
-                    <div class="card fade-in">
-                        <div class="mb-6">
-                            <div class="w-full h-48 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg mb-4 flex items-center justify-center">
-                                <span class="text-4xl text-white">🏦</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2">شبکه سازمانی بانک</h3>
-                            <p class="text-slate-400 mb-4">
-                                طراحی و پیاده‌سازی شبکه کامل برای یک بانک بزرگ شامل ۵۰ شعبه با قابلیت High Availability
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="bg-teal-500 text-slate-900 px-2 py-1 rounded text-sm font-medium">Cisco</span>
-                                <span class="bg-teal-500 text-slate-900 px-2 py-1 rounded text-sm font-medium">MPLS</span>
-                                <span class="bg-teal-500 text-slate-900 px-2 py-1 rounded text-sm font-medium">Security</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card fade-in">
-                        <div class="mb-6">
-                            <div class="w-full h-48 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg mb-4 flex items-center justify-center">
-                                <span class="text-4xl text-white">☁️</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2">مرکز داده مجازی</h3>
-                            <p class="text-slate-400 mb-4">
-                                راه‌اندازی مرکز داده مجازی با VMware vSphere برای یک شرکت تولیدی با ۲۰۰ کاربر
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="bg-purple-500 text-white px-2 py-1 rounded text-sm font-medium">VMware</span>
-                                <span class="bg-purple-500 text-white px-2 py-1 rounded text-sm font-medium">SAN</span>
-                                <span class="bg-purple-500 text-white px-2 py-1 rounded text-sm font-medium">Backup</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card fade-in">
-                        <div class="mb-6">
-                            <div class="w-full h-48 bg-gradient-to-br from-orange-500 to-red-600 rounded-lg mb-4 flex items-center justify-center">
-                                <span class="text-4xl text-white">🔒</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2">سیستم امنیتی پیشرفته</h3>
-                            <p class="text-slate-400 mb-4">
-                                پیاده‌سازی راه‌حل امنیتی کامل شامل Next-Gen Firewall، IPS و SIEM برای یک سازمان دولتی
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="bg-orange-500 text-white px-2 py-1 rounded text-sm font-medium">Fortinet</span>
-                                <span class="bg-orange-500 text-white px-2 py-1 rounded text-sm font-medium">SIEM</span>
-                                <span class="bg-orange-500 text-white px-2 py-1 rounded text-sm font-medium">IPS</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card fade-in">
-                        <div class="mb-6">
-                            <div class="w-full h-48 bg-gradient-to-br from-green-500 to-blue-600 rounded-lg mb-4 flex items-center justify-center">
-                                <span class="text-4xl text-white">📊</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2">سیستم مانیتورینگ مرکزی</h3>
-                            <p class="text-slate-400 mb-4">
-                                راه‌اندازی سیستم مانیتورینگ مرکزی با Zabbix برای نظارت بر ۱۰۰۰+ دستگاه شبکه
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="bg-green-500 text-white px-2 py-1 rounded text-sm font-medium">Zabbix</span>
-                                <span class="bg-green-500 text-white px-2 py-1 rounded text-sm font-medium">SNMP</span>
-                                <span class="bg-green-500 text-white px-2 py-1 rounded text-sm font-medium">Grafana</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card fade-in">
-                        <div class="mb-6">
-                            <div class="w-full h-48 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg mb-4 flex items-center justify-center">
-                                <span class="text-4xl text-white">🌐</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2">شبکه WAN سازمانی</h3>
-                            <p class="text-slate-400 mb-4">
-                                طراحی و پیاده‌سازی شبکه WAN برای اتصال ۳۰ دفتر در سراسر کشور با SD-WAN
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="bg-indigo-500 text-white px-2 py-1 rounded text-sm font-medium">SD-WAN</span>
-                                <span class="bg-indigo-500 text-white px-2 py-1 rounded text-sm font-medium">MPLS</span>
-                                <span class="bg-indigo-500 text-white px-2 py-1 rounded text-sm font-medium">VPN</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card fade-in">
-                        <div class="mb-6">
-                            <div class="w-full h-48 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-lg mb-4 flex items-center justify-center">
-                                <span class="text-4xl text-white">☁️</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-2">مایگریشن به Cloud</h3>
-                            <p class="text-slate-400 mb-4">
-                                مایگریشن زیرساخت IT یک شرکت از محیط فیزیکی به AWS Cloud با Zero Downtime
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="bg-yellow-500 text-slate-900 px-2 py-1 rounded text-sm font-medium">AWS</span>
-                                <span class="bg-yellow-500 text-slate-900 px-2 py-1 rounded text-sm font-medium">Migration</span>
-                                <span class="bg-yellow-500 text-slate-900 px-2 py-1 rounded text-sm font-medium">Hybrid</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Blog Section -->
-        <section id="blog" class="section bg-slate-800">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gradient mb-4">وبلاگ</h2>
-                    <div class="w-20 h-1 bg-teal-500 mx-auto rounded-full"></div>
-                    <p class="text-slate-400 mt-6 max-w-2xl mx-auto">
-                        آخرین مقالات و آموزش‌های تخصصی در حوزه شبکه، امنیت و زیرساخت IT
-                    </p>
-                </div>
-                
-                <!-- Blog Filter -->
-                <div class="blog-filter">
-                    <button class="filter-btn active" data-category="all">همه</button>
-                    <button class="filter-btn" data-category="network">شبکه</button>
-                    <button class="filter-btn" data-category="security">امنیت</button>
-                    <button class="filter-btn" data-category="virtualization">مجازی‌سازی</button>
-                    <button class="filter-btn" data-category="cloud">کلود</button>
-                    <button class="filter-btn" data-category="tutorial">آموزش</button>
-                </div>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-container">
-                    <!-- Blog posts will be populated by JavaScript -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section bg-slate-900">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gradient mb-4">تماس با من</h2>
-                    <div class="w-20 h-1 bg-teal-500 mx-auto rounded-full"></div>
-                    <p class="text-slate-400 mt-6 max-w-2xl mx-auto">
-                        برای مشاوره، همکاری یا سوالات خود با من در تماس باشید
-                    </p>
-                </div>
-                
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div class="slide-in-left">
-                        <div class="card">
-                            <h3 class="text-2xl font-bold text-teal-400 mb-6">اطلاعات تماس</h3>
-                            <div class="space-y-6">
-                                <div class="flex items-center">
-                                    <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center ml-4">
-                                        <span class="text-xl">📧</span>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-semibold text-white">ایمیل</h4>
-                                        <p class="text-slate-400" id="contact-email-display">mostafa.heydari@email.com</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-center">
-                                    <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center ml-4">
-                                        <span class="text-xl">📱</span>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-semibold text-white">تلفن</h4>
-                                        <p class="text-slate-400" id="contact-phone-display">۰۹۱۲۳۴۵۶۷۸۹</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-center">
-                                    <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center ml-4">
-                                        <span class="text-xl">📍</span>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-semibold text-white">موقعیت</h4>
-                                        <p class="text-slate-400" id="contact-location-display">تهران، ایران</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Social Links -->
-                            <div class="mt-8">
-                                <h4 class="font-semibold text-white mb-4">شبکه‌های اجتماعی</h4>
-                                <div class="flex flex-wrap gap-4" id="social-links-container">
-                                    <a href="https://linkedin.com/in/mostafa-heydari" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
-                                        💼
-                                    </a>
-                                    <a href="https://github.com/mostafa-heydari" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
-                                        🐙
-                                    </a>
-                                    <a href="https://twitter.com/mostafa_heydari" target="_blank" rel="noopener noreferrer" class="social-link" title="Twitter">
-                                        🐦
-                                    </a>
-                                    <a href="https://instagram.com/mostafa.heydari" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram">
-                                        📷
-                                    </a>
-                                    <a href="https://t.me/mostafa_heydari" target="_blank" rel="noopener noreferrer" class="social-link" title="Telegram">
-                                        ✈️
-                                    </a>
-                                    <a href="https://youtube.com/@mostafa-heydari" target="_blank" rel="noopener noreferrer" class="social-link" title="YouTube">
-                                        📺
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="slide-in-right">
-                        <div class="card">
-                            <h3 class="text-2xl font-bold text-teal-400 mb-6">پیام بفرستید</h3>
-                            <form id="contact-form" class="space-y-6">
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-300 mb-2">نام و نام خانوادگی</label>
-                                    <input type="text" class="admin-input" required>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-300 mb-2">ایمیل</label>
-                                    <input type="email" class="admin-input" required>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-300 mb-2">موضوع</label>
-                                    <input type="text" class="admin-input" required>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-300 mb-2">پیام</label>
-                                    <textarea class="admin-input admin-textarea" rows="5" required></textarea>
-                                </div>
-                                <button type="submit" class="admin-button w-full">
-                                    ارسال پیام
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="bg-slate-900 border-t border-slate-700 py-8">
-            <div class="container mx-auto px-6 text-center">
-                <div class="mb-6">
-                    <h3 class="text-2xl font-bold text-gradient mb-2">MYTechHubPro24</h3>
-                    <p class="text-slate-400">متخصص شبکه و زیرساخت IT</p>
-                </div>
-                
-                <div class="flex justify-center space-x-6 space-x-reverse mb-6">
-                    <a href="https://linkedin.com/in/mostafa-heydari" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-teal-400 transition-colors">
-                        <span class="text-2xl">💼</span>
-                    </a>
-                    <a href="https://github.com/mostafa-heydari" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-teal-400 transition-colors">
-                        <span class="text-2xl">🐙</span>
-                    </a>
-                    <a href="https://t.me/mostafa_heydari" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-teal-400 transition-colors">
-                        <span class="text-2xl">✈️</span>
-                    </a>
-                    <a href="mailto:mostafa.heydari@email.com" class="text-slate-400 hover:text-teal-400 transition-colors">
-                        <span class="text-2xl">📧</span>
-                    </a>
-                </div>
-                
-                <div class="border-t border-slate-700 pt-6">
-                    <p class="text-slate-500 text-sm">
-                        © ۲۰۲۴ MYTechHubPro24. تمامی حقوق محفوظ است.
-                    </p>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <script>
-        // Navigation and Website JavaScript
-        class Website {
-            constructor() {
-                this.init();
+    langDropdown.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            currentLang.textContent = btn.textContent;
+            langDropdown.style.display = 'none';
+            langBtn.setAttribute('aria-expanded', false);
+            // تغییر جهت و فونت بر اساس زبان
+            if(lang === 'fa') {
+                document.body.dir = 'rtl';
+                document.body.style.fontFamily = "'Vazirmatn', sans-serif";
+            } else {
+                document.body.dir = 'ltr';
+                document.body.style.fontFamily = "'Book Antiqua', serif";
             }
+        });
+    });
 
-            init() {
-                this.bindNavigationEvents();
-                this.bindContactForm();
-                this.animateSkills();
-                this.loadBlogPosts();
-                this.bindBlogEvents();
-            }
-
-            bindNavigationEvents() {
-                // Mobile menu toggle
-                const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-                const mobileMenu = document.getElementById('mobile-menu');
-                
-                mobileMenuBtn.addEventListener('click', () => {
-                    mobileMenu.classList.toggle('open');
-                });
-
-                // Navigation links
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const targetId = link.getAttribute('href').substring(1);
-                        const targetSection = document.getElementById(targetId);
-                        
-                        if (targetSection) {
-                            targetSection.scrollIntoView({ behavior: 'smooth' });
-                            
-                            // Update active nav link
-                            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                            link.classList.add('active');
-                            
-                            // Close mobile menu
-                            mobileMenu.classList.remove('open');
-                        }
-                    });
-                });
-
-                // Update active nav on scroll
-                window.addEventListener('scroll', () => {
-                    const sections = document.querySelectorAll('section[id]');
-                    const scrollPos = window.scrollY + 100;
-
-                    sections.forEach(section => {
-                        const sectionTop = section.offsetTop;
-                        const sectionHeight = section.offsetHeight;
-                        const sectionId = section.getAttribute('id');
-
-                        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                            document.querySelectorAll('.nav-link').forEach(link => {
-                                link.classList.remove('active');
-                                if (link.getAttribute('href') === `#${sectionId}`) {
-                                    link.classList.add('active');
-                                }
-                            });
-                        }
-                    });
-                });
-            }
-
-            bindContactForm() {
-                const contactForm = document.getElementById('contact-form');
-                contactForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    
-                    // Simulate form submission
-                    const submitBtn = contactForm.querySelector('button[type="submit"]');
-                    const originalText = submitBtn.textContent;
-                    
-                    submitBtn.textContent = 'در حال ارسال...';
-                    submitBtn.disabled = true;
-                    
-                    setTimeout(() => {
-                        submitBtn.textContent = 'پیام ارسال شد ✓';
-                        setTimeout(() => {
-                            submitBtn.textContent = originalText;
-                            submitBtn.disabled = false;
-                            contactForm.reset();
-                        }, 2000);
-                    }, 1500);
-                });
-            }
-
-            animateSkills() {
-                const skillBars = document.querySelectorAll('.skill-progress');
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const width = entry.target.style.width;
-                            entry.target.style.width = '0%';
-                            setTimeout(() => {
-                                entry.target.style.width = width;
-                            }, 200);
-                        }
-                    });
-                });
-
-                skillBars.forEach(bar => observer.observe(bar));
-            }
-
-            loadBlogPosts() {
-                const blogContainer = document.getElementById('blog-container');
-                const samplePosts = [
-                    {
-                        id: 1,
-                        title: 'راه‌اندازی شبکه VLAN در محیط سازمانی',
-                        excerpt: 'آموزش کامل پیکربندی و مدیریت VLAN برای بهبود امنیت و عملکرد شبکه',
-                        category: 'network',
-                        tags: ['VLAN', 'Cisco', 'شبکه'],
-                        date: '۱۴۰۳/۰۸/۱۵',
-                        readTime: '۱۰ دقیقه',
-                        content: `
-                            <h2>مقدمه</h2>
-                            <p>شبکه‌های VLAN (Virtual Local Area Network) یکی از مهم‌ترین تکنولوژی‌های شبکه‌ای هستند که امکان تقسیم‌بندی منطقی شبکه فیزیکی را فراهم می‌کنند.</p>
-                            
-                            <h3>مزایای استفاده از VLAN</h3>
-                            <ul>
-                                <li>بهبود امنیت شبکه</li>
-                                <li>کاهش ترافیک broadcast</li>
-                                <li>مدیریت بهتر شبکه</li>
-                                <li>انعطاف‌پذیری در طراحی</li>
-                            </ul>
-                            
-                            <h3>پیکربندی VLAN در سوئیچ Cisco</h3>
-                            <pre><code>Switch(config)# vlan 10
-Switch(config-vlan)# name IT_Department
-Switch(config-vlan)# exit
-Switch(config)# interface fastethernet 0/1
-Switch(config-if)# switchport mode access
-Switch(config-if)# switchport access vlan 10</code></pre>
-                            
-                            <p>این دستورات یک VLAN جدید با شماره ۱۰ ایجاد می‌کند و پورت مورد نظر را به آن اختصاص می‌دهد.</p>
-                        `
-                    },
-                    {
-                        id: 2,
-                        title: 'پیاده‌سازی Firewall با pfSense',
-                        excerpt: 'راهنمای گام به گام نصب و پیکربندی pfSense برای محافظت از شبکه',
-                        category: 'security',
-                        tags: ['pfSense', 'Firewall', 'امنیت'],
-                        date: '۱۴۰۳/۰۸/۱۰',
-                        readTime: '۱۵ دقیقه',
-                        content: `
-                            <h2>معرفی pfSense</h2>
-                            <p>pfSense یک توزیع رایگان و متن‌باز مبتنی بر FreeBSD است که قابلیت‌های فایروال، روتر و VPN را ارائه می‌دهد.</p>
-                            
-                            <h3>ویژگی‌های کلیدی</h3>
-                            <ul>
-                                <li>فایروال پیشرفته</li>
-                                <li>VPN Server/Client</li>
-                                <li>Load Balancing</li>
-                                <li>Traffic Shaping</li>
-                                <li>Intrusion Detection</li>
-                            </ul>
-                            
-                            <h3>مراحل نصب</h3>
-                            <p>برای نصب pfSense ابتدا فایل ISO را از سایت رسمی دانلود کرده و روی سرور یا ماشین مجازی نصب کنید.</p>
-                        `
-                    },
-                    {
-                        id: 3,
-                        title: 'مجازی‌سازی با VMware vSphere',
-                        excerpt: 'آموزش راه‌اندازی و مدیریت محیط مجازی‌سازی VMware vSphere',
-                        category: 'virtualization',
-                        tags: ['VMware', 'vSphere', 'مجازی‌سازی'],
-                        date: '۱۴۰۳/۰۸/۰۵',
-                        readTime: '۲۰ دقیقه',
-                        content: `
-                            <h2>VMware vSphere چیست؟</h2>
-                            <p>VMware vSphere یک پلتفرم مجازی‌سازی سازمانی است که شامل ESXi hypervisor و vCenter Server می‌باشد.</p>
-                            
-                            <h3>اجزای اصلی vSphere</h3>
-                            <ul>
-                                <li>ESXi Hypervisor</li>
-                                <li>vCenter Server</li>
-                                <li>vSphere Client</li>
-                                <li>vMotion</li>
-                                <li>High Availability (HA)</li>
-                            </ul>
-                        `
-                    },
-                    {
-                        id: 4,
-                        title: 'مایگریشن به AWS Cloud',
-                        excerpt: 'استراتژی‌ها و بهترین روش‌های انتقال زیرساخت به AWS',
-                        category: 'cloud',
-                        tags: ['AWS', 'Cloud', 'Migration'],
-                        date: '۱۴۰۳/۰۷/۲۸',
-                        readTime: '۱۲ دقیقه',
-                        content: `
-                            <h2>مایگریشن به کلود</h2>
-                            <p>انتقال زیرساخت IT به کلود یکی از مهم‌ترین تصمیمات استراتژیک سازمان‌ها محسوب می‌شود.</p>
-                            
-                            <h3>مزایای AWS Cloud</h3>
-                            <ul>
-                                <li>مقیاس‌پذیری</li>
-                                <li>کاهش هزینه</li>
-                                <li>قابلیت اطمینان بالا</li>
-                                <li>امنیت پیشرفته</li>
-                            </ul>
-                        `
-                    },
-                    {
-                        id: 5,
-                        title: 'مانیتورینگ شبکه با Zabbix',
-                        excerpt: 'راه‌اندازی سیستم نظارت و مانیتورینگ شبکه با Zabbix',
-                        category: 'tutorial',
-                        tags: ['Zabbix', 'Monitoring', 'SNMP'],
-                        date: '۱۴۰۳/۰۷/۲۰',
-                        readTime: '۱۸ دقیقه',
-                        content: `
-                            <h2>Zabbix چیست؟</h2>
-                            <p>Zabbix یک راه‌حل متن‌باز برای مانیتورینگ شبکه، سرورها و اپلیکیشن‌ها است.</p>
-                            
-                            <h3>قابلیت‌های Zabbix</h3>
-                            <ul>
-                                <li>مانیتورینگ real-time</li>
-                                <li>هشدارهای هوشمند</li>
-                                <li>گزارش‌گیری پیشرفته</li>
-                                <li>رابط کاربری وب</li>
-                            </ul>
-                        `
-                    },
-                    {
-                        id: 6,
-                        title: 'آخرین اخبار تکنولوژی شبکه',
-                        excerpt: 'بررسی جدیدترین تحولات در دنیای شبکه و زیرساخت IT',
-                        category: 'news',
-                        tags: ['اخبار', 'تکنولوژی', 'شبکه'],
-                        date: '۱۴۰۳/۰۷/۱۵',
-                        readTime: '۵ دقیقه',
-                        content: `
-                            <h2>اخبار روز دنیای شبکه</h2>
-                            <p>در این مقاله به بررسی آخرین تحولات و اخبار مهم دنیای شبکه و IT می‌پردازیم.</p>
-                            
-                            <h3>موضوعات مهم</h3>
-                            <ul>
-                                <li>5G و تأثیر آن بر شبکه‌های سازمانی</li>
-                                <li>SD-WAN و آینده شبکه‌های WAN</li>
-                                <li>Zero Trust Security</li>
-                                <li>Edge Computing</li>
-                            </ul>
-                        `
-                    }
-                ];
-
-                // Store posts globally for admin panel
-                window.blogPosts = samplePosts;
-
-                this.renderBlogPosts(samplePosts);
-            }
-
-            renderBlogPosts(posts) {
-                const blogContainer = document.getElementById('blog-container');
-                blogContainer.innerHTML = '';
-
-                posts.forEach(post => {
-                    const postElement = document.createElement('div');
-                    postElement.className = 'blog-card fade-in';
-                    postElement.dataset.category = post.category;
-                    postElement.innerHTML = `
-                        <div class="p-6">
-                            <div class="flex items-center justify-between mb-4">
-                                <span class="bg-teal-500 text-slate-900 px-3 py-1 rounded-full text-sm font-medium">
-                                    ${this.getCategoryName(post.category)}
-                                </span>
-                                <span class="text-slate-400 text-sm">${post.date}</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-white mb-3">${post.title}</h3>
-                            <p class="text-slate-400 mb-4 leading-relaxed">${post.excerpt}</p>
-                            <div class="flex items-center justify-between">
-                                <div class="blog-tags">
-                                    ${post.tags.map(tag => `<span class="blog-tag">${tag}</span>`).join('')}
-                                </div>
-                                <span class="text-teal-400 text-sm">${post.readTime}</span>
-                            </div>
-                        </div>
-                    `;
-                    
-                    postElement.addEventListener('click', () => {
-                        this.openBlogModal(post);
-                    });
-                    
-                    blogContainer.appendChild(postElement);
-                });
-            }
-
-            getCategoryName(category) {
-                const categoryNames = {
-                    'network': 'شبکه',
-                    'security': 'امنیت',
-                    'virtualization': 'مجازی‌سازی',
-                    'cloud': 'کلود',
-                    'tutorial': 'آموزش',
-                    'news': 'اخبار'
-                };
-                return categoryNames[category] || category;
-            }
-
-            bindBlogEvents() {
-                // Filter buttons
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        // Update active filter
-                        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                        btn.classList.add('active');
-                        
-                        // Filter posts
-                        const category = btn.dataset.category;
-                        const posts = category === 'all' ? window.blogPosts : window.blogPosts.filter(post => post.category === category);
-                        this.renderBlogPosts(posts);
-                    });
-                });
-
-                // Close blog modal
-                document.getElementById('close-blog-modal').addEventListener('click', () => {
-                    document.getElementById('blog-modal').classList.add('admin-hidden');
-                });
-
-                // Close modal on backdrop click
-                document.getElementById('blog-modal').addEventListener('click', (e) => {
-                    if (e.target.id === 'blog-modal') {
-                        document.getElementById('blog-modal').classList.add('admin-hidden');
-                    }
-                });
-            }
-
-            openBlogModal(post) {
-                document.getElementById('modal-article-title').textContent = post.title;
-                document.getElementById('modal-article-date').textContent = post.date;
-                document.getElementById('modal-article-category').textContent = this.getCategoryName(post.category);
-                document.getElementById('modal-article-read-time').textContent = post.readTime;
-                document.getElementById('modal-article-content').innerHTML = post.content;
-                
-                const tagsContainer = document.getElementById('modal-article-tags');
-                tagsContainer.innerHTML = post.tags.map(tag => `<span class="blog-tag">${tag}</span>`).join('');
-                
-                document.getElementById('blog-modal').classList.remove('admin-hidden');
-            }
+    // بستن منوی زبان با کلیک بیرون
+    document.addEventListener('click', (e) => {
+        if (!langBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+            langDropdown.style.display = 'none';
+            langBtn.setAttribute('aria-expanded', false);
         }
+    });
 
-        // Admin Panel JavaScript
-        class AdminPanel {
-            constructor() {
-                this.isLoggedIn = false;
-                this.data = this.loadData();
-                this.captchaCode = '';
-                this.adminPassword = localStorage.getItem('adminPassword') || 'admin123';
-                this.sessionTimeout = parseInt(localStorage.getItem('sessionTimeout')) || 30;
-                this.activityLog = JSON.parse(localStorage.getItem('activityLog')) || [];
-                this.sessionTimer = null;
-                this.currentEditingArticle = null;
-                this.init();
+    // پروژه‌ها و مدال
+    const projectsData = {
+        1: {
+            title: 'پروژه نمونه ۱',
+            content: `<p>توضیحات کامل پروژه نمونه ۱.</p><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="پروژه ۱" style="max-width:100%;border-radius:8px;">`
+        },
+        2: {
+            title: 'پروژه نمونه ۲',
+            content: `<p>توضیحات کامل پروژه نمونه ۲.</p><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="پروژه ۲" style="max-width:100%;border-radius:8px;">`
+        }
+    };
+
+    const modal = document.getElementById('project-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalBody = document.getElementById('modal-body');
+    const closeBtn = modal.querySelector('.close-btn');
+
+    document.querySelectorAll('.btn-show-project').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-project');
+            if(projectsData[id]) {
+                modalTitle.textContent = projectsData[id].title;
+                modalBody.innerHTML = projectsData[id].content;
+                modal.style.display = 'flex';
             }
+        });
+    });
 
-            init() {
-                this.generateCaptcha();
-                this.bindEvents();
-                this.loadSkills();
-                this.loadProjects();
-                this.loadServices();
-                this.loadArticles();
-                this.updateSessionTimeoutInput();
-                this.bindRichEditorEvents();
-            }
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
 
-            updateSessionTimeoutInput() {
-                const timeoutInput = document.getElementById('session-timeout');
-                if (timeoutInput) {
-                    timeoutInput.value = this.sessionTimeout;
-                }
-            }
+    window.addEventListener('click', (e) => {
+        if(e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
 
-            generateCaptcha() {
-                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-                this.captchaCode = '';
-                for (let i = 0; i < 5; i++) {
-                    this.captchaCode += chars.charAt(Math.floor(Math.random() * chars.length));
-                }
-                document.getElementById('captcha-display').textContent = this.captchaCode;
-            }
+    // فرم تماس (فعلا فقط alert)
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('پیام شما ارسال شد. متشکرم!');
+        contactForm.reset();
+    });
+</script>
 
-            bindEvents() {
-                // Admin toggle
-                document.getElementById('admin-toggle').addEventListener('click', () => {
-                    this.showLogin();
-                });
-
-                // Login form
-                document.getElementById('admin-login-form').addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    this.handleLogin();
-                });
-
-                // Refresh captcha
-                document.getElementById('refresh-captcha').addEventListener('click', () => {
-                    this.generateCaptcha();
-                });
-
-                // Close admin
-                document.getElementById('close-admin').addEventListener('click', () => {
-                    this.hideAdmin();
-                });
-
-                // Tab switching
-                document.querySelectorAll('.admin-tab').forEach(tab => {
-                    tab.addEventListener('click', () => {
-                        this.switchTab(tab.dataset.tab);
-                    });
-                });
-
-                // Save all changes
-                document.getElementById('save-all-changes').addEventListener('click', () => {
-                    this.saveAllChanges();
-                });
-
-                // Reset all changes
-                document.getElementById('reset-all-changes').addEventListener('click', () => {
-                    this.resetAllChanges();
-                });
-
-                // Export/Import data
-                document.getElementById('export-data').addEventListener('click', () => {
-                    this.exportData();
-                });
-
-                document.getElementById('import-data').addEventListener('click', () => {
-                    this.importData();
-                });
-
-                // Add buttons
-                document.getElementById('add-skill').addEventListener('click', () => {
-                    this.addSkill();
-                });
-
-                document.getElementById('add-project').addEventListener('click', () => {
-                    this.addProject();
-                });
-
-                document.getElementById('add-service').addEventListener('click', () => {
-                    this.addService();
-                });
-
-                document.getElementById('add-article').addEventListener('click', () => {
-                    this.addArticle();
-                });
-
-                // Article editor events
-                document.getElementById('close-article-editor').addEventListener('click', () => {
-                    this.closeArticleEditor();
-                });
-
-                document.getElementById('cancel-article-edit').addEventListener('click', () => {
-                    this.closeArticleEditor();
-                });
-
-                document.getElementById('article-form').addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    this.saveArticle();
-                });
-
-                // Security events
-                document.getElementById('change-password-form').addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    this.changePassword();
-                });
-
-                document.getElementById('save-session-settings').addEventListener('click', () => {
-                    this.saveSessionSettings();
-                });
-
-                document.getElementById('clear-activity-log').addEventListener('click', () => {
-                    this.clearActivityLog();
-                });
-
-                // Auto-save on input change
-                document.addEventListener('input', (e) => {
-                    if (e.target.classList.contains('admin-input')) {
-                        this.autoSave();
-                    }
-                });
-            }
-
-            bindRichEditorEvents() {
-                // Rich text editor toolbar
-                document.querySelectorAll('.editor-btn').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const command = btn.dataset.command;
-                        const value = btn.dataset.value;
-                        
-                        if (command === 'createLink') {
-                            const url = prompt('لینک را وارد کنید:');
-                            if (url) {
-                                document.execCommand(command, false, url);
-                            }
-                        } else if (value) {
-                            document.execCommand(command, false, value);
-                        } else {
-                            document.execCommand(command, false, null);
-                        }
-                        
-                        document.getElementById('article-content').focus();
-                    });
-                });
-            }
-
-            showLogin() {
-                document.getElementById('admin-login-overlay').classList.remove('admin-hidden');
-            }
-
-            hideLogin() {
-                document.getElementById('admin-login-overlay').classList.add('admin-hidden');
-            }
-
-            showAdmin() {
-                document.getElementById('admin-panel').classList.remove('admin-hidden');
-                document.getElementById('admin-toggle').classList.add('admin-hidden');
-            }
-
-            hideAdmin() {
-                document.getElementById('admin-panel').classList.add('admin-hidden');
-                document.getElementById('admin-toggle').classList.remove('admin-hidden');
-                this.isLoggedIn = false;
-            }
-
-            handleLogin() {
-                const username = document.getElementById('admin-username').value;
-                const password = document.getElementById('admin-password').value;
-                const captcha = document.getElementById('admin-captcha').value;
-                const errorDiv = document.getElementById('login-error');
-
-                // Authentication with dynamic password
-                if (username === 'admin' && password === this.adminPassword && captcha.toUpperCase() === this.captchaCode) {
-                    this.isLoggedIn = true;
-                    this.hideLogin();
-                    this.showAdmin();
-                    this.startSessionTimer();
-                    this.logActivity('ورود موفقیت‌آمیز به پنل مدیریت');
-                    this.loadActivityLog();
-                    this.showNotification('ورود موفقیت‌آمیز بود', 'success');
-                } else {
-                    errorDiv.textContent = 'اطلاعات وارد شده صحیح نیست';
-                    errorDiv.classList.remove('admin-hidden');
-                    this.generateCaptcha();
-                    this.logActivity('تلاش ناموفق برای ورود');
-                    this.showNotification('خطا در ورود', 'error');
-                }
-            }
-
-            switchTab(tabName) {
-                // Hide all tab contents
-                document.querySelectorAll('.admin-tab-content').forEach(content => {
-                    content.classList.add('admin-hidden');
-                });
-
-                // Remove active class from all tabs
-                document.querySelectorAll('.admin-tab').forEach(tab => {
-                    tab.classList.remove('active');
-                });
-
-                // Show selected tab content
-                document.getElementById(`admin-${tabName}`).classList.remove('admin-hidden');
-
-                // Add active class to selected tab
-                document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
-            }
-
-            loadData() {
-                const saved = localStorage.getItem('adminPanelData');
-                return saved ? JSON.parse(saved) : {
-                    skills: [
-                        { name: 'Cisco Networking', level: 95, category: 'network' },
-                        { name: 'VMware vSphere', level: 90, category: 'virtualization' },
-                        { name: 'Network Security', level: 92, category: 'security' },
-                        { name: 'AWS Cloud', level: 85, category: 'cloud' },
-                        { name: 'Linux Administration', level: 88, category: 'system' }
-                    ],
-                    projects: [
-                        { title: 'شبکه سازمانی بانک', description: 'طراحی و پیاده‌سازی شبکه کامل برای یک بانک بزرگ', technologies: ['Cisco', 'MPLS', 'Security'] },
-                        { title: 'مرکز داده مجازی', description: 'راه‌اندازی مرکز داده مجازی با VMware vSphere', technologies: ['VMware', 'SAN', 'Backup'] },
-                        { title: 'سیستم امنیتی پیشرفته', description: 'پیاده‌سازی راه‌حل امنیتی کامل', technologies: ['Fortinet', 'SIEM', 'IPS'] }
-                    ],
-                    services: [
-                        { title: 'طراحی شبکه', description: 'طراحی و پیاده‌سازی شبکه‌های مقیاس‌پذیر و امن', icon: '🌐' },
-                        { title: 'امنیت شبکه', description: 'پیاده‌سازی راه‌حل‌های امنیتی پیشرفته', icon: '🔒' },
-                        { title: 'مجازی‌سازی', description: 'راه‌اندازی و مدیریت محیط‌های مجازی', icon: '☁️' }
-                    ]
-                };
-            }
-
-            saveData() {
-                localStorage.setItem('adminPanelData', JSON.stringify(this.data));
-            }
-
-            autoSave() {
-                clearTimeout(this.autoSaveTimer);
-                this.autoSaveTimer = setTimeout(() => {
-                    this.saveAllChanges();
-                }, 2000);
-            }
-
-            saveAllChanges() {
-                // Save general settings
-                const inputs = document.querySelectorAll('.admin-input[data-field]');
-                inputs.forEach(input => {
-                    const field = input.dataset.field;
-                    const value = input.value;
-                    
-                    // Update website content
-                    const targetElement = document.getElementById(field);
-                    if (targetElement) {
-                        targetElement.textContent = value;
-                    }
-                    
-                    // Update contact info
-                    if (field === 'contact-email') {
-                        document.getElementById('contact-email-display').textContent = value;
-                    } else if (field === 'contact-phone') {
-                        document.getElementById('contact-phone-display').textContent = value;
-                    } else if (field === 'contact-location') {
-                        document.getElementById('contact-location-display').textContent = value;
-                    }
-                    
-                    // Update social links
-                    if (field.startsWith('social-')) {
-                        const platform = field.replace('social-', '');
-                        const links = document.querySelectorAll(`a[href*="${platform}"]`);
-                        links.forEach(link => {
-                            link.href = value;
-                        });
-                    }
-                });
-
-                this.saveData();
-                this.logActivity('تغییرات ذخیره شد');
-                this.showNotification('تغییرات با موفقیت ذخیره شد', 'success');
-            }
-
-            resetAllChanges() {
-                if (confirm('آیا مطمئن هستید که می‌خواهید همه تغییرات را بازنشانی کنید؟')) {
-                    localStorage.removeItem('adminPanelData');
-                    location.reload();
-                }
-            }
-
-            exportData() {
-                const data = {
-                    adminData: this.data,
-                    blogPosts: window.blogPosts || [],
-                    settings: {
-                        adminPassword: this.adminPassword,
-                        sessionTimeout: this.sessionTimeout
-                    }
-                };
-                
-                const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'website-data.json';
-                a.click();
-                URL.revokeObjectURL(url);
-                
-                this.logActivity('داده‌ها صادر شد');
-                this.showNotification('داده‌ها با موفقیت صادر شد', 'success');
-            }
-
-            importData() {
-                const input = document.createElement('input');
-                input.type = 'file';
-                input.accept = '.json';
-                input.onchange = (e) => {
-                    const file = e.target.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = (e) => {
-                            try {
-                                const data = JSON.parse(e.target.result);
-                                if (data.adminData) {
-                                    this.data = data.adminData;
-                                    this.saveData();
-                                }
-                                if (data.blogPosts) {
-                                    window.blogPosts = data.blogPosts;
-                                }
-                                if (data.settings) {
-                                    this.adminPassword = data.settings.adminPassword;
-                                    this.sessionTimeout = data.settings.sessionTimeout;
-                                    localStorage.setItem('adminPassword', this.adminPassword);
-                                    localStorage.setItem('sessionTimeout', this.sessionTimeout);
-                                }
-                                this.logActivity('داده‌ها وارد شد');
-                                this.showNotification('داده‌ها با موفقیت وارد شد', 'success');
-                                location.reload();
-                            } catch (error) {
-                                this.showNotification('خطا در وارد کردن داده‌ها', 'error');
-                            }
-                        };
-                        reader.readAsText(file);
-                    }
-                };
-                input.click();
-            }
-
-            loadSkills() {
-                const container = document.getElementById('skills-list');
-                container.innerHTML = '';
-                
-                this.data.skills.forEach((skill, index) => {
-                    const skillElement = document.createElement('div');
-                    skillElement.className = 'skill-item flex items-center justify-between';
-                    skillElement.innerHTML = `
-                        <div class="flex-1">
-                            <input type="text" class="admin-input mb-2" value="${skill.name}" onchange="adminPanel.updateSkill(${index}, 'name', this.value)">
-                            <div class="flex items-center gap-4">
-                                <span class="text-sm text-slate-400">سطح:</span>
-                                <input type="range" min="0" max="100<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'986ab55e356afea4',t:'MTc1OTE0MDgxMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>
