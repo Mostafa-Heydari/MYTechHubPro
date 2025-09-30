@@ -1,23 +1,22 @@
 backend:
   name: github
-  repo:  Mostafa-Heydari/MYTechHubPro   # نام کاربری و نام مخزن خود را جایگزین کنید
-  branch: main                    # شاخه اصلی مخزن (مثلاً main یا master)
+  repo: Mostafa-Heydari/MYTechHubPro
+  branch: main
   auth_scope: repo
-    open_authoring: false
+  open_authoring: false
   site_domain: "https://mytechhubpro.vercel.app"
 
 auth:
   client_id: "Ov23li4nijegVW5a92Zh"
-  client_secret: "8756881f94c7e1356f630728f5707b69f578a44e"
   redirect_uri: "https://mytechhubpro.vercel.app/admin/"
 
-media_folder: "static/images/uploads"  # مسیر ذخیره تصاویر آپلود شده
+media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
 
 collections:
   - name: "pages"
     label: "صفحات"
-    folder: "content/pages"             # مسیر فایل‌های قابل ویرایش (مثلاً Markdown)
+    folder: "content/pages"
     create: true
     slug: "{{slug}}"
     fields:
